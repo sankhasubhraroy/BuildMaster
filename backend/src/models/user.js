@@ -29,6 +29,23 @@ const userSchema = new Schema(
       type: String,
       trim: true,
     },
+    role: {
+      type: String,
+      trim: true,
+      enum: [
+        "ProjectManager",
+        "Contractor",
+        "Supervisor",
+        "Engineer",
+        "DocumentController",
+        "Accountant",
+        "Client",
+        "Auditor",
+        "Scheduler",
+        "SafetyOfficer",
+        "QualityControlInspector",
+      ],
+    },
     address: {
       country: {
         type: String,
@@ -61,4 +78,6 @@ const userSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model("user", userSchema);
+const User = mongoose.model("User", userSchema);
+
+module.exports = User;

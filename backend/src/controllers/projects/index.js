@@ -30,7 +30,10 @@ const getProjectById = async (req, res) => {
     const projectId = req.params.id;
 
     // Fetching the project data from database
-    const project = await Project.findById(projectId);
+    const project = await Project.findById(projectId)
+      .populate("manager")
+      .populate("tasks");
+
     // If there is no such project
     if (!project) {
       return res.status(404).json({

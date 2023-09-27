@@ -12,6 +12,10 @@ const taskSchema = new Schema(
       type: String,
       trim: true,
     },
+    manager: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
     assignees: [
       {
         type: Schema.Types.ObjectId,

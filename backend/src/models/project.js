@@ -25,13 +25,22 @@ const projectSchema = new Schema(
     },
     status: {
       type: String,
-      enum: ["planned", "progressing", "completed"],
+      required: true,
+      enum: ["planned", "ongoing", "completed"],
       default: "planned",
     },
-    image: {
-      type: String,
-      trim: true,
-    },
+    tasks: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Task",
+      },
+    ],
+    images: [
+      {
+        type: String,
+        trim: true,
+      },
+    ],
   },
   {
     timestamps: true,

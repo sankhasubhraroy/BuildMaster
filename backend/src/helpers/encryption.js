@@ -11,4 +11,8 @@ const encryptData = async (data) => {
   }
 };
 
-module.exports = { encryptData };
+const decryptData = async (data, hashedData) => {
+  return bcrypt.compare(data, hashedData);
+};
+
+module.exports = { encryptData, decryptData };

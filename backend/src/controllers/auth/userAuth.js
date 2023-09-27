@@ -5,7 +5,7 @@ const {
   isPhoneValid,
   isPasswordValid,
 } = require("../../helpers/validations");
-const { encryptData } = require("../../helpers/encryption");
+const { encryptData, decryptData } = require("../../helpers/encryption");
 const { generateUsername, generateJWT } = require("../../helpers/generate");
 const { DEFAULT_AVATAR } = require("../../helpers/constants");
 
@@ -87,4 +87,56 @@ const register = async (req, res) => {
   }
 };
 
-module.exports = register;
+const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Input validations
+    if (!email || !password) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid email or password",
+      });
+    }
+
+    // Fetching data from database
+    const user = await User.findOne({ email });
+    // If user don't exist
+    if (!user) {
+      return res.status(400).json({
+        success: false,
+        message: "Account dosen't exists, create a new account",
+      });
+    }
+
+    // comparing the password with database encrypted password
+    const isPasswordMatch = await decryptData(password, user.password);
+
+    if (!isPasswordMatch) {
+      return res.status(400).json({
+        success: false,
+        message: "Wrong email or Password",
+      });
+    }
+
+    // Payload for JWT
+    const payload = { id: user.id };
+    // Generating JWT token
+    const token = await generateJWT(payload);
+
+    res.status(200).send({
+      success: true,
+      message: "Logged in successfully",
+      token,
+      user,
+    });
+  } catch (error) {
+    console.error(error.message);
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+module.exports = { register, login };

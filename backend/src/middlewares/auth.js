@@ -12,6 +12,7 @@ const authUser = (req, res, next) => {
       });
     }
 
+    // Verify the token
     jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
       if (error) {
         return res.status(401).json({
@@ -19,7 +20,7 @@ const authUser = (req, res, next) => {
           message: "Invalid token",
         });
       } else {
-        req.user = decoded.user;
+        req.user = decoded;
         next();
       }
     });

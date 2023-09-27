@@ -19,20 +19,17 @@ const register = async (req, res) => {
         success: false,
         message: "Please enter a valid name",
       });
-    }
-    if (!isEmailValid(email)) {
+    } else if (!isEmailValid(email)) {
       return res.status(400).json({
         success: false,
         message: "Please enter a valid email address",
       });
-    }
-    if (!isPhoneValid(phone)) {
+    } else if (!isPhoneValid(phone)) {
       return res.status(400).json({
         success: false,
         message: "Please enter a valid phone number",
       });
-    }
-    if (!isPasswordValid(password)) {
+    } else if (!isPasswordValid(password)) {
       return res.status(400).json({
         success: false,
         message:

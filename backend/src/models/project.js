@@ -12,9 +12,44 @@ const projectSchema = new Schema(
       type: String,
       trim: true,
     },
+    location: {
+      country: {
+        type: String,
+        trim: true,
+      },
+      state: {
+        type: String,
+        trim: true,
+      },
+      city: {
+        type: String,
+        trim: true,
+      },
+      pincode: {
+        type: Number,
+        trim: true,
+      },
+    },
+    coordinates: {
+      longitude: {
+        type: Number,
+        trim: true,
+      },
+      latitude: {
+        type: Number,
+        trim: true,
+      },
+    },
+    price: {
+      type: Number,
+      required: true,
+      trim: true,
+      min: 0,
+    },
     startDate: {
       type: Date,
       required: true,
+      default: Date.now,
     },
     endDate: {
       type: Date,

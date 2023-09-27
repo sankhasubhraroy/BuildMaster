@@ -23,18 +23,24 @@ const projectSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
-    status: {
-      type: String,
-      required: true,
-      enum: ["planned", "ongoing", "completed"],
-      default: "planned",
-    },
     tasks: [
       {
         type: Schema.Types.ObjectId,
         ref: "Task",
       },
     ],
+    blueprints: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Blueprint",
+      },
+    ],
+    status: {
+      type: String,
+      required: true,
+      enum: ["planned", "ongoing", "completed"],
+      default: "planned",
+    },
     images: [
       {
         type: String,

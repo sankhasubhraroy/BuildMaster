@@ -1,0 +1,125 @@
+.navbar {
+  width: 100%;
+  z-index: 1;
+  top: 0;
+}
+
+.desktop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  transition: background-color 3ms ease-in-out;
+}
+
+.logo-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand-logo {
+  width: 7rem;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+}
+
+.menu-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  font-family: var(--font-basic);
+  font-size: medium;
+  font-weight: var(--weight-medium);
+  list-style: none;
+  transition: color 3ms ease-in-out;
+}
+
+.menu-list li a {
+  text-decoration: none;
+}
+
+.nav-btn {
+  font-family: var(--font-basic);
+  font-weight: var(--weight-medium);
+  font-size: medium;
+  color: var(--text-light);
+  padding: 0.5rem 1rem;
+  border-radius: var(--rounded-md);
+  border: none;
+  cursor: pointer;
+}
+
+.mobile {
+  height: 100vh;
+  width: 15rem;
+  background: white;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+}
+
+.mobile-menu-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+  margin: 3rem 0;
+  padding: 0;
+  font-family: var(--font-basic);
+  font-weight: var(--weight-normal);
+  font-size: medium;
+  color: var(--text-dark);
+  list-style: none;
+}
+
+.mobile-menu-list li a {
+  text-decoration: none;
+  color: black;
+}
+
+.hamburger {
+  z-index: 1;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+}
+
+.backdrop {
+  position: absolute;
+  height: 100vh;
+  background-color: var(--backdrop-color);
+  inset: 0;
+}
+
+@media (max-width: 640px) {
+  .nav-btn {
+    max-width: 80px;
+    padding: 0.25rem 0.5rem;
+    font-size: x-small;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .desktop {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .menu-list {
+    font-size: small;
+  }
+  .nav-btn {
+    font-size: small;
+  }
+}

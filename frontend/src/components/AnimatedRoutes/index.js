@@ -6,6 +6,7 @@ import Services from "../../pages/Services";
 import Contact from "../../pages/Contact";
 import Navbar from "../Navbar";
 import Auth from "../Auth";
+import Profile from "../../pages/Profile";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -20,6 +21,7 @@ const AnimatedRoutes = () => {
             <Route path="service" element={<Services />} />
             <Route path="contact" element={<Contact />} />
             <Route path="auth" element={<Auth />} />
+            <Route path="profile" element={<Profile />} />
           </Route>
         </Routes>
       </AnimatePresence>

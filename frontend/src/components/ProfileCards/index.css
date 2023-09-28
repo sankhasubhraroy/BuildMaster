@@ -1,0 +1,38 @@
+.p-card-section {
+  margin: auto;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.p-card {
+  width: 11rem;
+  height: 16rem;
+  padding: 2rem;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: var(--rounded-md);
+  overflow: hidden;
+  -webkit-box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.p-card-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 2.5rem;
+}
+
+.p-card-text {
+  margin: 2rem 0;
+}
+
+.p-card-underline {
+  width: 100%;
+  height: 0.25rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}

@@ -142,7 +142,7 @@ const deleteTask = async (req, res) => {
     // Check if the task exists
     if (!task) {
       return res.status(404).json({
-        success: fasle,
+        success: false,
         message: "Task not found",
       });
     }

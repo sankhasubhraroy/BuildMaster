@@ -8,7 +8,7 @@ import {
 import useMediaQuery from "../../hooks/useMediaQuery";
 import Hamburger from "./Hamburger";
 import { navLinks } from "../../utils/constants";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import Backdrop from "./Backdrop";
 import "./index.css";
 
@@ -75,6 +75,7 @@ const Navbar = () => {
   const isTablet = useMediaQuery("(max-width: 768px)");
   const { scrollYProgress } = useScroll();
   const [scrollY, setScrollY] = useState(0);
+  const navigate = useNavigate();
 
   // changing the scrollY value as per page scroll progress
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
@@ -133,6 +134,7 @@ const Navbar = () => {
                   ? { background: "#22668d" }
                   : { background: "transparent" }
               }
+              onClick={() => navigate("/auth")}
             >
               Join
             </button>

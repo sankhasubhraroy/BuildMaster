@@ -1,0 +1,103 @@
+.auth {
+  height: auto;
+  width: 500px;
+  padding: 2.5rem;
+  margin: 5rem auto;
+}
+
+.auth-form {
+  user-select: none;
+}
+
+.form-heading {
+  text-transform: capitalize;
+  text-align: center;
+  font-family: var(--font-basic);
+  font-weight: var(--weight-bold);
+  font-size: x-large;
+  margin-top: 1rem;
+}
+/*  transition-colors duration-500 ease-in */
+.form-btn {
+  padding: 0.5rem 2rem;
+  margin: 1rem auto;
+  display: block;
+  border-radius: var(--rounded-md);
+  border: none;
+  font-family: var(--font-basic);
+  font-weight: var(--weight-bold);
+  text-transform: capitalize;
+  background-color: var(--accent-500);
+  transition: color 5ms ease-in;
+}
+
+.form-redirect {
+  font-family: var(--font-basic);
+  font-size: small;
+  margin: 1rem 0;
+}
+
+.redirect-highlight {
+  color: blueviolet;
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: var(--font-alternate);
+}
+
+.input-field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.5rem;
+}
+
+.input-label {
+  position: absolute;
+  text-transform: capitalize;
+  font-family: var(--font-basic);
+}
+
+.input-box {
+  height: 2.5rem;
+  padding: 0 2.5rem;
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+.input-icon {
+  position: absolute;
+  top: 2rem;
+  left: 0.75rem;
+  transition: color 3ms ease-in-out;
+}
+
+.input-underline {
+  position: absolute;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.animated-underline {
+  position: absolute;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background-color: blueviolet;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 2.25rem;
+  right: 0.75rem;
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .auth {
+    height: 100%;
+    width: 100%;
+  }
+}

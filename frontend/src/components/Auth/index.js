@@ -13,12 +13,14 @@ import {
   isPhoneValid,
 } from "../../utils/validations";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/authContext";
 
 const Auth = () => {
   const [formType, setFormType] = useState("login");
   const [formData, setFormData] = useState({});
   const { addNotification } = useNotification();
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   // Call the notification on success
   const handleSuccess = (message) => {
@@ -81,11 +83,11 @@ const Auth = () => {
           // Obtaining the JWT token
           const { token } = response.data;
 
-          // Store the token securely
-          localStorage.setItem = ("token", token);
+          // Authenticate the user
+          login(token);
 
           // Redirect to the user's profile page
-          navigate("/");
+          navigate("/profile");
         }
       }
 
@@ -113,11 +115,11 @@ const Auth = () => {
           // Obtaining the JWT token
           const { token } = response.data;
 
-          // Store the token securely
-          localStorage.setItem = ("token", token);
+          // Authenticate the user
+          login(token);
 
           // Redirect to the user's profile page
-          navigate("/");
+          navigate("/profile");
         }
       }
     } catch (error) {

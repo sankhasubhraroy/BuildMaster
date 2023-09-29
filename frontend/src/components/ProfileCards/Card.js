@@ -17,8 +17,6 @@ const Card = ({ icon, text, accent, route }) => {
   const [isActive, setIsActive] = useState(false);
   const navigate = useNavigate();
 
-  console.log(isActive);
-
   const handleHoverStart = () => {
     setIsActive(true);
   };

@@ -5,14 +5,18 @@ import { TbEdit } from "react-icons/tb";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { MdLogout } from "react-icons/md";
 import ProfileSection from "../../components/ProfileSection";
+import { useAuth } from "../../contexts/authContext";
 
 const Profile = () => {
+  const { user } = useAuth();
+  console.log(user);
+
   return (
     <div>
       <ProfileSection
-        name={"Sankhasubhra Roy"}
-        email={"sankha@gmail.com"}
-        phone={"+91 6718922125"}
+        name={user?.name}
+        email={user?.email}
+        phone={user?.phone}
       />
       <ProfileCards>
         <Card

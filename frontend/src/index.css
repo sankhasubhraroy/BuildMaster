@@ -36,9 +36,17 @@
   --rounded-full: 50%;
 }
 
-body {
+body,
+html {
   margin: 0;
+  box-sizing: border-box;
   font-family: var(--font-basic);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
 }

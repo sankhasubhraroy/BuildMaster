@@ -9,6 +9,7 @@ import Auth from "../Auth";
 import Profile from "../../pages/Profile";
 import { AuthProvider } from "../../contexts/authContext";
 import Projects from "../../pages/Projects";
+import Project from "../Project";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -26,6 +27,7 @@ const AnimatedRoutes = () => {
               <Route path="auth" element={<Auth />} />
               <Route path="profile" element={<Profile />} />
               <Route path="projects" element={<Projects />} />
+              <Route path="project/:id" element={<Project />} />
             </Route>
           </Routes>
         </AuthProvider>

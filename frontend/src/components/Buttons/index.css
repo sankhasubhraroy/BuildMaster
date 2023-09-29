@@ -1,0 +1,28 @@
+.btn {
+  font-family: var(--font-basic);
+  font-size: small;
+  font-weight: var(--weight-medium);
+  padding: 0.25rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 0.5rem;
+  color: white;
+  border-radius: var(--rounded-md);
+  -webkit-box-shadow: var(--shadow-primary);
+  -moz-box-shadow: var(--shadow-primary);
+  box-shadow: var(--shadow-primary);
+}
+
+.btn.create-btn {
+  background-color: var(--creative-blue);
+}
+
+.btn.delete-btn {
+  background-color: var(--error-red);
+}
+
+.btn.edit-btn {
+  background-color: var(--success-green);
+}

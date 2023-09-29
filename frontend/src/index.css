@@ -3,7 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
 :root {
-  --bg-primary: #f0f0f0;
+  --bg-primary: #4f709c;
   --bg-secondary: #fffadd;
   --accent-600: #213555;
   --accent-500: #22668d;
@@ -14,6 +14,9 @@
   --text-dark: #191717;
   --text-light: #f1efef;
   --backdrop-color: #000000e1;
+  --success-green: #32cd32;
+  --creative-blue: #4169e1;
+  --error-red: #ed2939;
   --font-basic: "Roboto", sans-serif;
   --font-alternate: "Mooli", sans-serif;
   --font-display: "Bebas Neue", sans-serif;
@@ -34,13 +37,18 @@
   --rounded-2xl: 1rem;
   --rounded-3xl: 1.5rem;
   --rounded-full: 50%;
+  --shadow-primary: 3px 3px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body,
 html {
   margin: 0;
-  box-sizing: border-box;
   font-family: var(--font-basic);
+  background-color: var(--bg-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

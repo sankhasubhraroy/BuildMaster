@@ -41,7 +41,7 @@ const Card = ({ url, name, description, route }) => {
       <div className="project-card-body">
         <p className="project-name">{name}</p>
         <p className="project-description">
-          {description.length > 200
+          {description?.length > 200
             ? description.substring(0, 200) + "..."
             : description}
         </p>

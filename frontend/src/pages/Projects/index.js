@@ -3,9 +3,8 @@ import ProjectCards from "../../components/ProjectCards";
 import Card from "../../components/ProjectCards/Card";
 import CreateBtn from "../../components/Buttons/CreateBtn";
 import "./index.css";
-import DeleteBtn from "../../components/Buttons/DeleteBtn";
-import EditBtn from "../../components/Buttons/EditBtn";
 import { useModal } from "../../contexts/modalContext";
+import CreateProject from "../../components/CreateProject";
 
 const Projects = () => {
   const { openModal } = useModal();
@@ -15,10 +14,8 @@ const Projects = () => {
       <div className="btn-placeholder">
         <CreateBtn
           text={"Create a ajkdjak"}
-          onClick={() => openModal(<DeleteBtn text={"This is a modal"} />)}
+          onClick={() => openModal(<CreateProject />)}
         />
-        <DeleteBtn text={"Delete thranfkjhf"} />
-        <EditBtn text={"Edit andkahdjk"} />
       </div>
 
       <ProjectCards>

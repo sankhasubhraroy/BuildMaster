@@ -4,13 +4,13 @@
 
 :root {
   --bg-primary: #4f709c;
-  --bg-secondary: #fffadd;
+  --bg-secondary: #e1ebee;
   --accent-600: #213555;
   --accent-500: #22668d;
   --accent-400: #4f709c;
   --accent-300: #8ecddd;
   --accent-200: #ffcc70;
-  --accent-100: #e5d283;
+  --accent-100: #fffadd;
   --text-dark: #191717;
   --text-light: #f1efef;
   --backdrop-color: #000000e1;

@@ -2,6 +2,7 @@
   font-family: var(--font-basic);
   font-size: small;
   font-weight: var(--weight-medium);
+  text-transform: uppercase;
   padding: 0.25rem 1rem;
   display: flex;
   justify-content: center;

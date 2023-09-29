@@ -1,0 +1,33 @@
+.modal-backdrop {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  inset: 0;
+  overflow: auto;
+  background-color: var(--backdrop-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  position: relative;
+  padding: 2.5rem;
+  border-radius: var(--rounded-md);
+  background-color: white;
+  border: 2px solid black;
+}
+
+.modal-close {
+  width: 1.5rem;
+  height: 1.5rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: var(--rounded-full);
+  padding: 0.25rem;
+}

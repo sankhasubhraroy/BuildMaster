@@ -8,6 +8,7 @@ import Navbar from "../Navbar";
 import Auth from "../Auth";
 import Profile from "../../pages/Profile";
 import { AuthProvider } from "../../contexts/authContext";
+import Projects from "../../pages/Projects";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -24,6 +25,7 @@ const AnimatedRoutes = () => {
               <Route path="contact" element={<Contact />} />
               <Route path="auth" element={<Auth />} />
               <Route path="profile" element={<Profile />} />
+              <Route path="projects" element={<Projects />} />
             </Route>
           </Routes>
         </AuthProvider>

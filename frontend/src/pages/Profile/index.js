@@ -6,10 +6,29 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { MdLogout } from "react-icons/md";
 import ProfileSection from "../../components/ProfileSection";
 import { useAuth } from "../../contexts/authContext";
+import { useEffect, useState } from "react";
+import axios from "../../api/axios";
 
 const Profile = () => {
-  const { user } = useAuth();
-  console.log(user);
+  const { auth, logout } = useAuth();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get(`/user/profile`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: auth,
+        },
+      })
+      .then((response) => {
+        setUser(response.data.user);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        logout();
+      });
+  }, [auth, logout]);
 
   return (
     <div>

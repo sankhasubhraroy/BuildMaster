@@ -1,28 +1,13 @@
 .project-section {
-  width: 100%;
-  box-sizing: border-box;
-  background-color: var(--accent-400);
-}
-.project-upper-section {
-  width: 100%;
-  padding: 8rem;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 4rem;
-}
-
-.project-section-right {
-  width: 30rem;
+  width: 1024px;
+  margin: auto;
   padding: 2rem;
-  box-sizing: border-box;
 }
 
 .carousel-container {
   overflow: hidden;
-  width: 40rem;
-  height: 22rem;
+  width: 100%;
+  height: 26rem;
   position: relative;
   display: flex;
   border-radius: var(--rounded-lg);
@@ -58,31 +43,72 @@
   left: 10px;
 }
 
-.project-lower-section {
+.project-info {
   width: 100%;
-  padding: 8rem;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 4rem;
+  margin: 1rem 0;
 }
 
-.project-tasks-section {
-  width: 44rem;
+.p-info-header {
+  font-weight: var(--weight-light);
+  font-size: 2rem;
+  text-transform: capitalize;
 }
 
-.project-tasks-section h1 {
+.p-info-manager {
+  margin-top: 0.75rem;
+  font-weight: var(--weight-medium);
+  text-transform: capitalize;
+}
+
+.p-info-manager span {
+  font-size: x-small;
+  font-weight: var(--weight-light);
+  background-color: var(--accent-300);
+  color: white;
+  padding: 0.25rem;
+  margin-right: 1rem;
+  border-radius: var(--rounded-lg);
+}
+
+.p-info-price {
+  margin: 0.75rem 0;
+  color: var(--success-green);
+}
+
+.p-info-description {
+  margin-top: 1rem;
+  font-weight: var(--weight-light);
+}
+
+.project-location {
+  width: 640px;
+  height: 20rem;
+  margin: 2rem auto;
+  border-radius: var(--rounded-lg);
+}
+
+.project-location img {
+  width: 100%;
+  height: 100%;
+}
+
+.project-tasks {
+  width: 640px;
+  margin: 4rem auto;
+}
+
+.project-tasks h1 {
   text-align: center;
-}
-
-.project-blueprints-section {
-  width: 30rem;
-  padding: 2rem;
-  box-sizing: border-box;
-  border: 2px solid black;
+  font-size: 2rem;
+  font-weight: var(--weight-light);
+  margin: 1rem;
 }
 
 .project-blueprints {
-  width: 100%;
+  width: 640px;
+  padding: 2rem;
+  margin: 2rem auto;
+  box-sizing: border-box;
+  border-radius: var(--rounded-lg);
+  background-color: white;
 }

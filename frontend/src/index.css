@@ -3,8 +3,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
 :root {
-  --bg-primary: #4f709c;
-  --bg-secondary: #e1ebee;
+  --bg-primary: #e1ebee;
+  --bg-secondary: #4f709c;
   --accent-600: #213555;
   --accent-500: #22668d;
   --accent-400: #4f709c;
@@ -41,12 +41,13 @@
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body,
 html {
-  margin: 0;
   font-family: var(--font-basic);
   background-color: var(--bg-primary);
   -webkit-font-smoothing: antialiased;

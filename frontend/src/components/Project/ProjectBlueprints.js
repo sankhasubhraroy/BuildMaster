@@ -1,6 +1,6 @@
 const ProjectBlueprints = () => {
   return (
-    <div className="project-blueprints">
+    <div className="p-blueprint">
       <p>plan.pdf</p>
     </div>
   );

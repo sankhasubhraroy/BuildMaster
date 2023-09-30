@@ -13,7 +13,7 @@ const underlineVariants = {
   },
 };
 
-const Card = ({ url, name, description, route }) => {
+const Card = ({ url, projectId, name, description }) => {
   const [isActive, setIsActive] = useState(false);
   const navigate = useNavigate();
 
@@ -50,7 +50,7 @@ const Card = ({ url, name, description, route }) => {
       <motion.div
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        onClick={() => navigate(route)}
+        onClick={() => navigate(`/project/${projectId}`)}
         className="project-card-arrow"
       >
         <BsFillArrowRightSquareFill size={24} color="#e5d283" />

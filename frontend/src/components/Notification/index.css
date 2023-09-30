@@ -9,6 +9,7 @@
   flex-direction: column;
   justify-content: flex-end;
   list-style: none;
+  z-index: 5;
 }
 
 .notification {
@@ -25,6 +26,8 @@
   align-items: center;
   border-radius: 10px;
   user-select: none;
+  text-transform: capitalize;
+  overflow: hidden;
 }
 
 .notification-close {

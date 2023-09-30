@@ -5,16 +5,19 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { NotificationProvider } from "./contexts/notificationContext";
 import { ModalProvider } from "./contexts/modalContext";
+import { AuthProvider } from "./contexts/authContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <NotificationProvider>
-      <ModalProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </ModalProvider>
-    </NotificationProvider>
+    <AuthProvider>
+      <NotificationProvider>
+        <ModalProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </ModalProvider>
+      </NotificationProvider>
+    </AuthProvider>
   </React.StrictMode>
 );

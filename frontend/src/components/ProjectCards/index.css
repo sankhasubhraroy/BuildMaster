@@ -1,31 +1,27 @@
 .project-card-section {
   width: 100%;
-  margin: 5rem auto;
-  padding: 2rem;
+  margin: 2rem 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 2rem;
   box-sizing: border-box;
-  border: 2px solid black;
 }
 
 .project-card {
-  width: 22rem;
-  height: 18rem;
+  width: 18rem;
+  height: 22rem;
   position: relative;
   box-sizing: border-box;
-  border-radius: var(--rounded-md);
+  border-radius: var(--rounded-lg);
   overflow: hidden;
-  -webkit-box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.5);
-  box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.5);
+  background-color: var(--accent-600);
 }
 
 .project-card-header {
   width: 100%;
-  height: 7.5rem;
+  height: 8.5rem;
 }
 
 .project-card-header img {
@@ -39,22 +35,39 @@
 }
 
 .project-name {
-  font-weight: var(--weight-medium);
+  font-size: large;
+  font-weight: var(--weight-normal);
   text-transform: capitalize;
-  margin: 0;
+  color: var(--text-light);
+}
+
+.project-price {
+  font-size: small;
+  font-weight: var(--weight-thin);
+  text-transform: capitalize;
+  margin-top: 0.25rem;
+  color: var(--success-green);
 }
 
 .project-description {
   font-size: small;
   text-transform: capitalize;
   margin: 1rem 0 0 0;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .project-card-arrow {
   position: absolute;
   right: 1rem;
   bottom: 1rem;
-  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.25rem 0.5rem;
+  font-family: var(--font-basic);
+  background-color: #e5d283;
+  border-radius: var(--rounded-lg);
 }
 
 .project-card-underline {

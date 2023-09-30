@@ -3,7 +3,7 @@
   font-size: small;
   font-weight: var(--weight-medium);
   text-transform: uppercase;
-  padding: 0.25rem 1rem;
+  padding: 0.75rem 1.75rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,9 +11,6 @@
   margin: 0.5rem;
   color: white;
   border-radius: var(--rounded-md);
-  -webkit-box-shadow: var(--shadow-primary);
-  -moz-box-shadow: var(--shadow-primary);
-  box-shadow: var(--shadow-primary);
 }
 
 .btn.create-btn {
@@ -26,4 +23,8 @@
 
 .btn.edit-btn {
   background-color: var(--success-green);
+}
+
+.btn.back-btn {
+  background-color: var(--accent-500);
 }

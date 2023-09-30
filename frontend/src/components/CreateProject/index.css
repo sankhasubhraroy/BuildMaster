@@ -35,7 +35,7 @@
   outline: none;
   border: none;
   border-radius: var(--rounded-sm);
-  background-color: var(--bg-secondary);
+  background-color: var(--bg-primary);
   font-family: var(--font-basic);
 }
 

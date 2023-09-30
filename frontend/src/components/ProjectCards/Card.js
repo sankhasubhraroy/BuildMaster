@@ -13,7 +13,7 @@ const underlineVariants = {
   },
 };
 
-const Card = ({ url, projectId, name, description }) => {
+const Card = ({ projectId, name, price, description, images }) => {
   const [isActive, setIsActive] = useState(false);
   const navigate = useNavigate();
 
@@ -32,14 +32,12 @@ const Card = ({ url, projectId, name, description }) => {
       className="project-card"
     >
       <div className="project-card-header">
-        <img
-          src="https://images.unsplash.com/photo-1570129477492-45c003edd2be"
-          alt="_"
-        />
+        <img src={`http://localhost:5000/uploads/${images[0]}`} alt="_" />
       </div>
 
       <div className="project-card-body">
         <p className="project-name">{name}</p>
+        <p className="project-price">{"₹ " + price}</p>
         <p className="project-description">
           {description?.length > 200
             ? description.substring(0, 200) + "..."
@@ -47,14 +45,15 @@ const Card = ({ url, projectId, name, description }) => {
         </p>
       </div>
 
-      <motion.div
+      <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => navigate(`/project/${projectId}`)}
         className="project-card-arrow"
       >
-        <BsFillArrowRightSquareFill size={24} color="#e5d283" />
-      </motion.div>
+        Explore
+        <BsFillArrowRightSquareFill size={24} />
+      </motion.button>
 
       <motion.div
         variants={underlineVariants}

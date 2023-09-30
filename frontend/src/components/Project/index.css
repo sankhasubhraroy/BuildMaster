@@ -104,6 +104,25 @@
   margin: 1rem;
 }
 
+.p-no-tasks {
+  width: 640px;
+  padding: 2rem;
+  margin: 2rem auto;
+  border-radius: var(--rounded-lg);
+  background-color: white;
+  font-size: small;
+  text-align: center;
+  text-transform: capitalize;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.btn-place {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
 .project-blueprints {
   width: 640px;
   padding: 2rem;

@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import "./index.css";
+import { useNotification } from "../../contexts/notificationContext";
+import axios from "../../api/axios";
+import { useModal } from "../../contexts/modalContext";
+import { useAuth } from "../../contexts/authContext";
 
 const CreateProject = () => {
   const [formData, setFormData] = useState({
@@ -13,21 +17,39 @@ const CreateProject = () => {
     price: "",
     startDate: "",
     endDate: "",
-    images: [],
+    image: {},
   });
 
   let currentDate = new Date();
   currentDate = currentDate.toISOString().split("T")[0];
+  const { addNotification } = useNotification();
+  const { closeModal } = useModal();
+  const { auth } = useAuth();
+
+  // Call the notification on success
+  const handleSuccess = (message) => {
+    addNotification({
+      type: "success",
+      message: message,
+    });
+  };
+
+  // Call the notification on failure
+  const handleFailure = (message) => {
+    addNotification({
+      type: "error",
+      message: message,
+    });
+  };
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
 
     if (type === "file") {
-      // Handle multiple file inputs by converting FileList to an array
-      const fileArray = Array.from(files);
+      // Handle file inputs
       setFormData((prevData) => ({
         ...prevData,
-        [name]: fileArray,
+        [name]: files[0],
       }));
     } else {
       // For other inputs, update the formData state as usual
@@ -38,9 +60,55 @@ const CreateProject = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
+
+    try {
+      const { name, pincode, price, startDate, endDate, image } = formData;
+
+      // Client side validations
+      if (!name) {
+        handleFailure("Name is required");
+        return;
+      } else if (!price) {
+        handleFailure("Price is required");
+        return;
+      } else if (!startDate || !endDate) {
+        handleFailure("Date is required");
+        return;
+      } else if (!price) {
+        handleFailure("price is required");
+        return;
+      } else if (!image) {
+        handleFailure("Upload at least one image");
+      } else if (!pincode) {
+        handleFailure("pincode is required");
+        return;
+      }
+
+      const response = await axios.post("/projects", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: auth,
+        },
+      });
+
+      if (response?.status === 200) {
+        handleSuccess(response.data.message);
+
+        // closing the modal
+        closeModal();
+      }
+    } catch (error) {
+      if (!error?.response) {
+        handleFailure("No server response");
+      } else if (error.response?.status === 400) {
+        handleFailure(error.response.data.message);
+      } else {
+        handleFailure("Server issues!!!");
+      }
+    }
   };
 
   return (
@@ -178,19 +246,18 @@ const CreateProject = () => {
           />
         </div>
 
-        {/* images */}
+        {/* image */}
         <div className="c-p-field c-p-file">
-          <label htmlFor="images" className="c-p-label">
-            select images
+          <label htmlFor="image" className="c-p-label">
+            select image
           </label>
 
           <input
-            id="images"
+            id="image"
             className="c-p-file-input"
             type="file"
-            name="images"
+            name="image"
             accept=".jpg, .jpeg, .png"
-            multiple
             onChange={handleChange}
           />
         </div>

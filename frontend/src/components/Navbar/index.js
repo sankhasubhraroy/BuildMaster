@@ -88,7 +88,7 @@ const Navbar = () => {
         ref={navRef}
         className="navbar"
         style={
-          isTablet || scrollY > 0.1
+          isTablet || scrollY > 0
             ? { position: "fixed" }
             : { position: "absolute" }
         }
@@ -97,7 +97,7 @@ const Navbar = () => {
           animate={isNavOpen ? "open" : "closed"}
           className="desktop"
           style={
-            isTablet || scrollY > 0.1
+            isTablet || scrollY > 0
               ? { background: "white" }
               : { background: "transparent" }
           }
@@ -105,7 +105,17 @@ const Navbar = () => {
           <div className="logo-group">
             {isTablet && <Hamburger toggle={() => setIsNavOpen(!isNavOpen)} />}
             <div className="brand-logo">
-              <h1>BuildMaster</h1>
+              <h1
+                style={
+                  !isTablet && scrollY > 0
+                    ? { color: "black" }
+                    : isTablet
+                    ? { color: "black" }
+                    : { color: "white" }
+                }
+              >
+                BuildMaster
+              </h1>
             </div>
           </div>
 
@@ -117,7 +127,7 @@ const Navbar = () => {
                     <Link
                       to={link.url}
                       style={
-                        scrollY > 0.1 ? { color: "black" } : { color: "white" }
+                        scrollY > 0 ? { color: "black" } : { color: "white" }
                       }
                     >
                       {link.title}
@@ -130,9 +140,9 @@ const Navbar = () => {
             <button
               className="nav-btn"
               style={
-                isTablet || scrollY > 0.1
-                  ? { background: "#22668d" }
-                  : { background: "transparent" }
+                isTablet || scrollY > 0
+                  ? { background: "#4f709c", color: "white" }
+                  : { background: "white", color: "#4f709c" }
               }
               onClick={() => navigate("/auth")}
             >

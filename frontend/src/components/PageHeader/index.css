@@ -1,16 +1,22 @@
 .page-header {
   width: 100%;
   height: 40vh;
-  position: relative;
   background-color: var(--bg-secondary);
 }
 
-.page-header h1 {
+.p-header-container {
+  position: relative;
+  width: 1024px;
+  height: 100%;
+  margin: auto;
+}
+
+.p-header-container h1 {
   font-size: 4rem;
   font-weight: var(--weight-light);
   text-transform: capitalize;
   color: white;
   position: absolute;
-  bottom: 6rem;
-  left: 10rem;
+  top: 50%;
+  left: 1rem;
 }

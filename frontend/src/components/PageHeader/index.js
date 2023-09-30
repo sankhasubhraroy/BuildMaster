@@ -3,7 +3,9 @@ import "./index.css";
 const PageHeader = ({ heading }) => {
   return (
     <section className="page-header">
-      <h1>{heading}</h1>
+      <div className="p-header-container">
+        <h1>{heading}</h1>
+      </div>
     </section>
   );
 };

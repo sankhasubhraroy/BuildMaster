@@ -7,8 +7,8 @@
 .desktop {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 2rem;
+  justify-content: space-around;
+  padding: 1rem 2rem;
   transition: background-color 3ms ease-in-out;
 }
 
@@ -21,6 +21,7 @@
 
 .brand-logo {
   width: 7rem;
+  font-family: var(--font-alternate);
 }
 
 .menu {
@@ -37,7 +38,7 @@
   gap: 2rem;
   font-family: var(--font-basic);
   font-size: medium;
-  font-weight: var(--weight-medium);
+  font-weight: var(--weight-normal);
   list-style: none;
   transition: color 3ms ease-in-out;
 }
@@ -48,7 +49,7 @@
 
 .nav-btn {
   font-family: var(--font-basic);
-  font-weight: var(--weight-medium);
+  font-weight: var(--weight-normal);
   font-size: medium;
   color: var(--text-light);
   padding: 0.5rem 1rem;
@@ -111,7 +112,8 @@
 
 @media screen and (max-width: 768px) {
   .desktop {
-    padding: 0 1rem;
+    padding: 1rem;
+    justify-content: space-between;
   }
 }
 

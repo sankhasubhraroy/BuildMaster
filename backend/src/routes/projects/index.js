@@ -5,12 +5,15 @@ const {
   updateProject,
   deleteProject,
   getProjects,
+  getProjectsByUserId,
 } = require("../../controllers/projects");
 const authUser = require("../../middlewares/auth");
 
 router.get("/", authUser, getProjects);
 
-router.get("/:id", authUser, getProjectById);
+router.get("/project", authUser, getProjectsByUserId);
+
+router.get("/project/:id", authUser, getProjectById);
 
 router.post("/", authUser, createProject);
 

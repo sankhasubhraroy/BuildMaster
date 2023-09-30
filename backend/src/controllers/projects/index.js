@@ -25,6 +25,37 @@ const getProjects = async (req, res) => {
   }
 };
 
+const getProjectsByUserId = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    // Fetching projects data from database of the user
+    const projects = await Project.find({ manager: userId })
+      .populate("manager")
+      .populate("tasks");
+
+    // If user dose'nt have any project
+    if (projects.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "No projects found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Projects fetched successfully",
+      projects,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 const getProjectById = async (req, res) => {
   try {
     const projectId = req.params.id;
@@ -201,6 +232,7 @@ const deleteProject = async (req, res) => {
 
 module.exports = {
   getProjects,
+  getProjectsByUserId,
   getProjectById,
   createProject,
   updateProject,

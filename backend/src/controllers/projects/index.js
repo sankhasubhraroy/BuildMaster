@@ -89,8 +89,9 @@ const getProjectById = async (req, res) => {
 
 const createProject = async (req, res) => {
   try {
-    const { name, description, location, price, startDate, endDate, images } =
-      req.body;
+    const { name, description, location, price, startDate, endDate } = req.body;
+    const image = req.file.filename;
+    console.log(req.file);
 
     // Input validations
     if (!name || !price) {
@@ -102,6 +103,11 @@ const createProject = async (req, res) => {
       return res.status(400).json({
         success: false,
         message: "Price must be greater than 0",
+      });
+    } else if (!image) {
+      return res.status(400).json({
+        success: false,
+        message: "Must upload image",
       });
     }
 
@@ -116,10 +122,10 @@ const createProject = async (req, res) => {
       startDate,
       endDate,
       manager: currentUser.id,
-      images,
+      images: [image],
     }).save();
 
-    res.status(201).json({
+    res.status(200).json({
       success: true,
       message: "Project created successfully",
       project,

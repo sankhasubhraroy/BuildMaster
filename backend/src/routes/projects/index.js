@@ -8,6 +8,7 @@ const {
   getProjectsByUserId,
 } = require("../../controllers/projects");
 const authUser = require("../../middlewares/auth");
+const upload = require("../../middlewares/upload");
 
 router.get("/", authUser, getProjects);
 
@@ -15,7 +16,7 @@ router.get("/project", authUser, getProjectsByUserId);
 
 router.get("/project/:id", authUser, getProjectById);
 
-router.post("/", authUser, createProject);
+router.post("/", authUser, upload.single("image"), createProject);
 
 router.put("/:id", authUser, updateProject);
 

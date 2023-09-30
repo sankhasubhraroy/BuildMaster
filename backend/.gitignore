@@ -1,6 +1,7 @@
 # custom
 /target
 /.vscode
+public/
 
 # Logs
 logs

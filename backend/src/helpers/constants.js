@@ -8,9 +8,8 @@ const PASSWORD_REGEX =
   /^(?=.*[-\#\$\.\%\&\@\!\+\=\<\>\*])(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
 
 // Avatar from DiceBear
-const AVATAR_IMAGE_SIZE = 200;
 const DEFAULT_AVATAR = (name) =>
-  `https://avatars.dicebear.com/api/initials/${name}.svg?size=${AVATAR_IMAGE_SIZE}`;
+  `https://api.dicebear.com/7.x/thumbs/svg?seed=${name}`;
 
 module.exports = {
   NAME_REGEX,

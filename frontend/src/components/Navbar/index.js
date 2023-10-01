@@ -11,6 +11,7 @@ import { navLinks } from "../../utils/constants";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import Backdrop from "./Backdrop";
 import "./index.css";
+import { useAuth } from "../../contexts/authContext";
 
 // Variants for mobile navbar
 const sidebarVariants = {
@@ -76,6 +77,7 @@ const Navbar = () => {
   const { scrollYProgress } = useScroll();
   const [scrollY, setScrollY] = useState(0);
   const navigate = useNavigate();
+  const { auth } = useAuth();
 
   // changing the scrollY value as per page scroll progress
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
@@ -105,17 +107,19 @@ const Navbar = () => {
           <div className="logo-group">
             {isTablet && <Hamburger toggle={() => setIsNavOpen(!isNavOpen)} />}
             <div className="brand-logo">
-              <h1
-                style={
-                  !isTablet && scrollY > 0
-                    ? { color: "black" }
-                    : isTablet
-                    ? { color: "black" }
-                    : { color: "white" }
-                }
-              >
-                BuildMaster
-              </h1>
+              <Link>
+                <h1
+                  style={
+                    !isTablet && scrollY > 0
+                      ? { color: "black" }
+                      : isTablet
+                      ? { color: "black" }
+                      : { color: "white" }
+                  }
+                >
+                  BuildMaster
+                </h1>
+              </Link>
             </div>
           </div>
 
@@ -137,17 +141,21 @@ const Navbar = () => {
               </ul>
             )}
 
-            <button
-              className="nav-btn"
-              style={
-                isTablet || scrollY > 0
-                  ? { background: "#4f709c", color: "white" }
-                  : { background: "white", color: "#4f709c" }
-              }
-              onClick={() => navigate("/auth")}
-            >
-              Join
-            </button>
+            {auth ? (
+              <></>
+            ) : (
+              <button
+                className="nav-btn"
+                style={
+                  isTablet || scrollY > 0
+                    ? { background: "#4f709c", color: "white" }
+                    : { background: "white", color: "#4f709c" }
+                }
+                onClick={() => navigate("/auth")}
+              >
+                Join
+              </button>
+            )}
           </div>
         </motion.nav>
 

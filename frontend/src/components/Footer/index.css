@@ -1,0 +1,51 @@
+.footer {
+  width: 100%;
+  margin-top: 20vh;
+  padding: 2rem;
+  background-color: var(--text-light);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.f-logo {
+  font-family: var(--font-alternate);
+  color: rgba(0, 0, 0, 0.7);
+  padding: 1rem;
+}
+
+.f-q-links {
+  padding: 1rem;
+}
+
+.f-q-links h2 {
+  font-weight: var(--weight-normal);
+  font-size: large;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.f-q-links li {
+  list-style: none;
+  margin: 0.5rem 0;
+}
+
+.f-q-links li a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.f-admin {
+  padding: 1rem;
+}
+
+.f-admin h2 {
+  font-weight: var(--weight-normal);
+  font-size: large;
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 0.5rem;
+}
+
+.f-admin a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.5);
+}

@@ -131,3 +131,73 @@
   border-radius: var(--rounded-lg);
   background-color: white;
 }
+
+.t-description {
+  margin-bottom: 1rem;
+  font-weight: var(--weight-light);
+  color: rgba(0, 0, 0, 0.8);
+  text-transform: capitalize;
+}
+
+.t-deadline {
+  margin: 0.75rem 0;
+  font-size: small;
+  font-weight: var(--weight-light);
+}
+
+.t-deadline span {
+  padding: 0.25rem 0.5rem;
+  background-color: var(--error-red);
+  color: white;
+  font-size: x-small;
+  font-weight: var(--weight-light);
+  text-transform: uppercase;
+  border-radius: var(--rounded-md);
+  margin-right: 0.5rem;
+}
+
+.t-status {
+  margin: 0.5rem 0;
+  font-size: small;
+  font-weight: var(--weight-light);
+  text-transform: uppercase;
+}
+
+.t-status span {
+  padding: 0.25rem 0.5rem;
+  background-color: var(--success-green);
+  color: white;
+  font-size: x-small;
+  font-weight: var(--weight-light);
+  text-transform: uppercase;
+  border-radius: var(--rounded-md);
+  margin-right: 0.5rem;
+}
+
+.t-assignees {
+  list-style: decimal;
+  width: 18rem;
+  margin: auto;
+  text-align: center;
+  padding: 1rem;
+  font-size: small;
+}
+
+.t-assignees p {
+  text-transform: uppercase;
+  font-size: small;
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 0.75rem;
+}
+
+.t-btn-holder {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.t-btn {
+  background-color: transparent;
+}

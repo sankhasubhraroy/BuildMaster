@@ -28,3 +28,8 @@
 .btn.back-btn {
   background-color: var(--accent-500);
 }
+
+.btn.cancel-btn {
+  background-color: var(--accent-200);
+  color: var(--text-dark);
+}

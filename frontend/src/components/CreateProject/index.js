@@ -62,7 +62,6 @@ const CreateProject = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
 
     try {
       const { name, pincode, price, startDate, endDate, image } = formData;
@@ -94,7 +93,7 @@ const CreateProject = () => {
         },
       });
 
-      if (response?.status === 200) {
+      if (response?.status === 201) {
         handleSuccess(response.data.message);
 
         // closing the modal

@@ -10,12 +10,15 @@ import PageHeader from "../PageHeader";
 import EditBtn from "../Buttons/EditBtn";
 import CreateBtn from "../Buttons/CreateBtn";
 import BackBtn from "../Buttons/BackBtn";
+import { useModal } from "../../contexts/modalContext";
+import CreateTasks from "../CreateTasks";
 
 const Project = () => {
   const { auth } = useAuth();
   const { id } = useParams();
   const [project, setProject] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const { openModal } = useModal();
 
   useEffect(() => {
     axios
@@ -67,7 +70,9 @@ const Project = () => {
           <div className="project-tasks">
             <h1>Tasks</h1>
 
-            {project?.tasks.length !== 0 && <ProjectTasks />}
+            {project?.tasks.length !== 0 && (
+              <ProjectTasks tasks={project.tasks} />
+            )}
 
             {project?.tasks.length === 0 && (
               <div className="p-no-tasks">
@@ -76,7 +81,10 @@ const Project = () => {
             )}
 
             <div className="btn-place">
-              <CreateBtn text="Create Task" />
+              <CreateBtn
+                text="Create Task"
+                onClick={() => openModal(<CreateTasks projectId={id} />)}
+              />
             </div>
           </div>
 

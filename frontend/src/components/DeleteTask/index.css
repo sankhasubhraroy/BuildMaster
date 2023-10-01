@@ -1,0 +1,21 @@
+.d-t {
+  width: 22rem;
+  height: 12rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.d-t h2 {
+  margin: 1rem 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: large;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.d-t-btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

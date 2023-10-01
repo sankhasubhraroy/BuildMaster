@@ -1,3 +1,4 @@
+const getCoordinates = require("../../helpers/getCoordinates");
 const Project = require("../../models/project");
 
 const getProjects = async (req, res) => {
@@ -263,6 +264,45 @@ const deleteProject = async (req, res) => {
   }
 };
 
+const getCoordinatesOfProject = async (req, res) => {
+  try {
+    const { projectId, city } = req.body;
+
+    // Fetching the project data from database
+    const project = await Project.findById(projectId);
+    // If the project don't exist
+    if (!project) {
+      return res.status(404).json({
+        success: false,
+        message: "Project not found",
+      });
+    }
+
+    // Fetching coordinates from geocoding api
+    const coordinates = await getCoordinates(city);
+
+    if (!coordinates) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid address",
+      });
+    }
+
+    (project.coordinates = coordinates), await project.save();
+
+    res.status(200).json({
+      success: true,
+      message: "Coordinates updated successfully",
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   getProjects,
   getProjectsByUserId,
@@ -270,4 +310,5 @@ module.exports = {
   createProject,
   updateProject,
   deleteProject,
+  getCoordinatesOfProject,
 };

@@ -6,6 +6,7 @@ const {
   deleteProject,
   getProjects,
   getProjectsByUserId,
+  getCoordinatesOfProject,
 } = require("../../controllers/projects");
 const authUser = require("../../middlewares/auth");
 const upload = require("../../middlewares/upload");
@@ -21,5 +22,7 @@ router.post("/", authUser, upload.single("image"), createProject);
 router.put("/", authUser, upload.single("image"), updateProject);
 
 router.delete("/:id", authUser, deleteProject);
+
+router.get("/coordinates", getCoordinatesOfProject);
 
 module.exports = router;

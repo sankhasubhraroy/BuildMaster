@@ -15,7 +15,12 @@ const storage = multer.diskStorage({
 
 // Filtering the file types
 const fileFilter = (req, file, callback) => {
-  const allowedFileTypes = ["image/jpeg", "image/jpg", "image/png"];
+  const allowedFileTypes = [
+    "image/jpeg",
+    "image/jpg",
+    "image/png",
+    "application/pdf",
+  ];
   if (allowedFileTypes.includes(file.mimetype)) {
     callback(null, true);
   } else {

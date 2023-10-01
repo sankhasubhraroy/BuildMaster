@@ -8,10 +8,6 @@ const blueprintSchema = new Schema(
       required: true,
       trim: true,
     },
-    description: {
-      type: String,
-      trim: true,
-    },
     uploadedBy: {
       type: Schema.Types.ObjectId,
       ref: "User",

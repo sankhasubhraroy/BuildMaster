@@ -64,7 +64,8 @@ const getProjectById = async (req, res) => {
     // Fetching the project data from database
     const project = await Project.findById(projectId)
       .populate("manager")
-      .populate("tasks");
+      .populate("tasks")
+      .populate("blueprints");
 
     // If there is no such project
     if (!project) {
@@ -114,6 +115,11 @@ const createProject = async (req, res) => {
         success: false,
         message: "Price must be greater than 0",
       });
+    } else if (!city) {
+      return res.status(400).json({
+        success: false,
+        message: "Location is not provided",
+      });
     } else if (!image) {
       return res.status(400).json({
         success: false,
@@ -123,6 +129,8 @@ const createProject = async (req, res) => {
 
     // Get current logged in user
     const currentUser = req.user;
+    // getting coordinates from city
+    const coordinates = await getCoordinates(city);
     // Creating new project to database
     const project = await new Project({
       name,
@@ -133,6 +141,7 @@ const createProject = async (req, res) => {
       endDate,
       manager: currentUser.id,
       images: [image],
+      coordinates,
     }).save();
 
     res.status(201).json({
@@ -173,6 +182,11 @@ const updateProject = async (req, res) => {
         success: false,
         message: "Price must be greater than 0",
       });
+    } else if (!city) {
+      return res.status(400).json({
+        success: false,
+        message: "Location is not provided",
+      });
     }
 
     // Fetching the project data from databse
@@ -193,6 +207,9 @@ const updateProject = async (req, res) => {
       });
     }
 
+    // fetching coordinates from city
+    const coordinates = await getCoordinates(city);
+
     // Updating the project
     project = await Project.findByIdAndUpdate(
       projectId,
@@ -205,6 +222,7 @@ const updateProject = async (req, res) => {
           startDate,
           endDate,
           status,
+          coordinates,
         },
         $push: { images: image },
       },
@@ -293,6 +311,7 @@ const getCoordinatesOfProject = async (req, res) => {
     res.status(200).json({
       success: true,
       message: "Coordinates updated successfully",
+      coordinates,
     });
   } catch (error) {
     console.error(error);

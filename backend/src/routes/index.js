@@ -12,4 +12,7 @@ router.use("/tasks", require("./tasks"));
 // User route
 router.use("/user", require("./user"));
 
+// Blueprints route
+router.use("/blueprints", require("./blueprints"));
+
 module.exports = router;

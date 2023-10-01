@@ -9,9 +9,9 @@ const authUser = require("../../middlewares/auth");
 
 router.get("/:taskId", authUser, getTaskbyId);
 
-router.post("/:projectId/", authUser, createTask);
+router.post("/", authUser, createTask);
 
-router.put("/:taskId", authUser, updateTask);
+router.put("/", authUser, updateTask);
 
 router.delete("/:taskId", authUser, deleteTask);
 

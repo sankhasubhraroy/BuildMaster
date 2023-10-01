@@ -5,13 +5,16 @@ import ProjectTasks from "./ProjectTasks";
 import ProjectBlueprints from "./ProjectBlueprints";
 import { useAuth } from "../../contexts/authContext";
 import axios from "../../api/axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import PageHeader from "../PageHeader";
 import EditBtn from "../Buttons/EditBtn";
 import CreateBtn from "../Buttons/CreateBtn";
 import BackBtn from "../Buttons/BackBtn";
 import { useModal } from "../../contexts/modalContext";
 import CreateTasks from "../CreateTasks";
+import EditProject from "../EditProject";
+import DeleteBtn from "../Buttons/DeleteBtn";
+import DeleteProject from "../DeleteProject";
 
 const Project = () => {
   const { auth } = useAuth();
@@ -19,6 +22,7 @@ const Project = () => {
   const [project, setProject] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const { openModal } = useModal();
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -44,8 +48,20 @@ const Project = () => {
 
         <section className="project-section">
           <div className="btn-place">
-            <BackBtn text="Back to projects" />
-            <EditBtn text="Edit project" />
+            <BackBtn
+              text="Back to projects"
+              onClick={() => navigate("/projects")}
+            />
+            <EditBtn
+              text="Edit project"
+              onClick={() =>
+                openModal(<EditProject projectId={id} data={project} />)
+              }
+            />
+            <DeleteBtn
+              text="delete project"
+              onClick={() => openModal(<DeleteProject projectId={id} />)}
+            />
           </div>
 
           <ProjectCarousel images={project.images} />

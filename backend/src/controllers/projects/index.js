@@ -89,9 +89,18 @@ const getProjectById = async (req, res) => {
 
 const createProject = async (req, res) => {
   try {
-    const { name, description, location, price, startDate, endDate } = req.body;
-    const image = req.file.filename;
-    console.log(req.file);
+    const {
+      name,
+      description,
+      country,
+      state,
+      city,
+      pincode,
+      price,
+      startDate,
+      endDate,
+    } = req.body;
+    const image = req.file?.filename;
 
     // Input validations
     if (!name || !price) {
@@ -117,7 +126,7 @@ const createProject = async (req, res) => {
     const project = await new Project({
       name,
       description,
-      location,
+      location: { country, state, city, pincode },
       price,
       startDate,
       endDate,
@@ -125,7 +134,7 @@ const createProject = async (req, res) => {
       images: [image],
     }).save();
 
-    res.status(200).json({
+    res.status(201).json({
       success: true,
       message: "Project created successfully",
       project,
@@ -141,10 +150,21 @@ const createProject = async (req, res) => {
 
 const updateProject = async (req, res) => {
   try {
-    const projectId = req.params.id;
     const currentUser = req.user;
-    const { name, description, location, price, startDate, endDate, images } =
-      req.body;
+    const {
+      projectId,
+      name,
+      description,
+      country,
+      state,
+      city,
+      pincode,
+      price,
+      startDate,
+      endDate,
+      status,
+    } = req.body;
+    const image = req.file?.filename;
 
     // Input validations
     if (price <= 0) {
@@ -155,7 +175,7 @@ const updateProject = async (req, res) => {
     }
 
     // Fetching the project data from databse
-    const project = await Project.findById(projectId);
+    let project = await Project.findById(projectId);
     // If the project don't exist
     if (!project) {
       return res.status(404).json({
@@ -173,15 +193,22 @@ const updateProject = async (req, res) => {
     }
 
     // Updating the project
-    project.name = name || project.name;
-    project.description = description || project.description;
-    project.location = location || project.location;
-    project.startDate = startDate || project.startDate;
-    project.endDate = endDate || project.endDate;
-    project.images = images || project.images;
-
-    // Saving the updated project
-    await project.save();
+    project = await Project.findByIdAndUpdate(
+      projectId,
+      {
+        $set: {
+          name,
+          description,
+          location: { country, state, city, pincode },
+          price,
+          startDate,
+          endDate,
+          status,
+        },
+        $push: { images: image },
+      },
+      { new: true, upsert: true }
+    );
 
     res.status(200).json({
       success: true,

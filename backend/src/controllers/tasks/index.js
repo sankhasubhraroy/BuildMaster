@@ -6,7 +6,7 @@ const getTaskbyId = async (req, res) => {
     const { taskId } = req.params;
 
     // Find the task by Id
-    const task = await Task.findById(taskId);
+    const task = await Task.findById(taskId).populate("asignees");
     // Check if the task exists
     if (!task) {
       return res.status(404).json({
@@ -31,9 +31,8 @@ const getTaskbyId = async (req, res) => {
 
 const createTask = async (req, res) => {
   try {
-    const { projectId } = req.params;
     const currentUser = req.user;
-    const { name, description, assignees, deadline } = req.body;
+    const { projectId, name, description, assignees, deadline } = req.body;
 
     // Input validations
     if (!name || !deadline) {
@@ -87,16 +86,15 @@ const createTask = async (req, res) => {
 
 const updateTask = async (req, res) => {
   try {
-    const { taskId } = req.params;
     const currentUser = req.user;
-    const { name, description, assignees, deadline, status } = req.body;
+    const { taskId, name, description, assignees, deadline, status } = req.body;
 
     // Find the task by ID
     const task = await Task.findById(taskId);
     // Check if the task exists
     if (!task) {
       return res.status(404).json({
-        success: fasle,
+        success: false,
         message: "Task not found",
       });
     }
@@ -118,7 +116,7 @@ const updateTask = async (req, res) => {
 
     await task.save();
 
-    res.json({
+    res.status(200).json({
       success: true,
       message: "Task updated successfully",
       task,

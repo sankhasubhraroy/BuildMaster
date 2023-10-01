@@ -18,7 +18,7 @@ router.get("/project/:id", authUser, getProjectById);
 
 router.post("/", authUser, upload.single("image"), createProject);
 
-router.put("/:id", authUser, updateProject);
+router.put("/", authUser, upload.single("image"), updateProject);
 
 router.delete("/:id", authUser, deleteProject);
 

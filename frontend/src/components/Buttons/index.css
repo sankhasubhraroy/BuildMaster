@@ -33,3 +33,7 @@
   background-color: var(--accent-200);
   color: var(--text-dark);
 }
+
+.btn.upload-btn {
+  background-color: var(--tomato-orange);
+}

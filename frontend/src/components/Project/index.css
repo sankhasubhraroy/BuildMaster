@@ -85,11 +85,23 @@
   height: 20rem;
   margin: 2rem auto;
   border-radius: var(--rounded-lg);
+  overflow: hidden;
 }
 
-.project-location img {
+.p-map-fetch {
   width: 100%;
   height: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.p-map-fetch p {
+  font-size: large;
+  font-weight: var(--weight-light);
+  text-transform: capitalize;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .project-tasks {
@@ -127,9 +139,21 @@
   width: 640px;
   padding: 2rem;
   margin: 2rem auto;
-  box-sizing: border-box;
   border-radius: var(--rounded-lg);
   background-color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.project-blueprints p {
+  text-transform: capitalize;
+  font-weight: var(--weight-light);
+  color: rgba(0, 0, 0, 0.7);
+  text-align: center;
+}
+
+.pdf-viewer {
+  margin: 1rem 0;
 }
 
 .t-description {

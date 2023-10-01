@@ -65,7 +65,7 @@ const EditProject = ({ projectId, data }) => {
     e.preventDefault();
 
     try {
-      const { name, pincode, price, startDate, endDate, image } = formData;
+      const { name, city, price, startDate, endDate, image } = formData;
 
       // Client side validations
       if (!name) {
@@ -82,8 +82,8 @@ const EditProject = ({ projectId, data }) => {
         return;
       } else if (!image) {
         handleFailure("Upload at least one image");
-      } else if (!pincode) {
-        handleFailure("pincode is required");
+      } else if (!city) {
+        handleFailure("city is required");
         return;
       }
 

@@ -15,6 +15,9 @@ import CreateTasks from "../CreateTasks";
 import EditProject from "../EditProject";
 import DeleteBtn from "../Buttons/DeleteBtn";
 import DeleteProject from "../DeleteProject";
+import Map from "../Map";
+import UploadBtn from "../Buttons/UploadBtn";
+import UploadBlueprint from "../UploadBuleprint";
 
 const Project = () => {
   const { auth } = useAuth();
@@ -77,10 +80,19 @@ const Project = () => {
           </div>
 
           <div className="project-location">
-            <img
-              src="https://images.unsplash.com/photo-1584972191378-d70853fc47fc"
-              alt="location"
-            />
+            {project.coordinates && (
+              <Map
+                coordinates={{
+                  lat: project.coordinates.latitude,
+                  lng: project.coordinates.longitude,
+                }}
+              />
+            )}
+            {!project.coordinates && (
+              <div className="p-map-fetch">
+                <p>looks like you don't provide any location</p>
+              </div>
+            )}
           </div>
 
           <div className="project-tasks">
@@ -105,8 +117,18 @@ const Project = () => {
           </div>
 
           <div className="project-blueprints">
-            <h1>Blueprints</h1>
-            <ProjectBlueprints />
+            {project.blueprints ? (
+              <ProjectBlueprints blueprints={project.blueprints} />
+            ) : (
+              <p>Start uploading blueprints</p>
+            )}
+          </div>
+
+          <div className="btn-place">
+            <UploadBtn
+              text="Upload blueprint"
+              onClick={() => openModal(<UploadBlueprint projectId={id} />)}
+            />
           </div>
         </section>
       </>

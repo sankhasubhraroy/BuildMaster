@@ -17,7 +17,7 @@ const CreateProject = () => {
     price: "",
     startDate: "",
     endDate: "",
-    image: {},
+    image: null,
   });
 
   let currentDate = new Date();
@@ -64,7 +64,7 @@ const CreateProject = () => {
     e.preventDefault();
 
     try {
-      const { name, pincode, price, startDate, endDate, image } = formData;
+      const { name, city, price, startDate, endDate, image } = formData;
 
       // Client side validations
       if (!name) {
@@ -81,8 +81,8 @@ const CreateProject = () => {
         return;
       } else if (!image) {
         handleFailure("Upload at least one image");
-      } else if (!pincode) {
-        handleFailure("pincode is required");
+      } else if (!city) {
+        handleFailure("city is required");
         return;
       }
 

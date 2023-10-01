@@ -3,7 +3,7 @@ import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 function Map({ coordinates }) {
   return (
-    <LoadScript googleMapsApiKey="AIzaSyCv0tGZVlwdLiE03GxWPQFmY8xgDDwam1g">
+    <LoadScript googleMapsApiKey={process.env.GOOGLE_MAPS_API_KEY}>
       <GoogleMap
         center={coordinates}
         zoom={13}

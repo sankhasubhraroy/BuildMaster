@@ -40,7 +40,11 @@ const Card = ({ icon, text, accent, route }) => {
 
       <p className="p-card-text">{text}</p>
 
-      <FaArrowRightLong size={24} color={accent} />
+      <FaArrowRightLong
+        size={24}
+        color={accent}
+        style={{ position: "absolute", left: "2rem", bottom: "2rem" }}
+      />
 
       <motion.div
         variants={underlineVariants}

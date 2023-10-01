@@ -8,10 +8,13 @@ import ProfileSection from "../../components/ProfileSection";
 import { useAuth } from "../../contexts/authContext";
 import { useEffect, useState } from "react";
 import axios from "../../api/axios";
+import PageHeader from "../../components/PageHeader";
+import "./index.css";
 
 const Profile = () => {
   const { auth, logout } = useAuth();
   const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
@@ -23,6 +26,7 @@ const Profile = () => {
       })
       .then((response) => {
         setUser(response.data.user);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error.response.data);
@@ -31,39 +35,42 @@ const Profile = () => {
   }, [auth, logout]);
 
   return (
-    <div>
-      <ProfileSection
-        name={user?.name}
-        email={user?.email}
-        phone={user?.phone}
-      />
-      <ProfileCards>
-        <Card
-          icon={<IoConstructOutline />}
-          text={"Projects"}
-          accent={"#4f709c"}
-          route={"/projects"}
-        />
-        <Card
-          icon={<TbEdit />}
-          text={"Edit Profile"}
-          accent={"#186F65"}
-          route={"/profile/edit"}
-        />
-        <Card
-          icon={<RiLockPasswordLine />}
-          text={"Change Password"}
-          accent={"#213555"}
-          route={"/profile/edit/password"}
-        />
-        <Card
-          icon={<MdLogout />}
-          text={"Logout"}
-          accent={"#A73121"}
-          route={"/logout"}
-        />
-      </ProfileCards>
-    </div>
+    !isLoading && (
+      <>
+        <PageHeader heading="profile" />
+
+        <div className="pr-container">
+          <ProfileCards>
+            <Card
+              icon={<IoConstructOutline />}
+              text={"Projects"}
+              accent={"#4f709c"}
+              route={"/projects"}
+            />
+            <Card
+              icon={<TbEdit />}
+              text={"Edit Profile"}
+              accent={"#186F65"}
+              route={"/profile/edit"}
+            />
+            <Card
+              icon={<RiLockPasswordLine />}
+              text={"Change Password"}
+              accent={"#213555"}
+              route={"/profile/edit/password"}
+            />
+            <Card
+              icon={<MdLogout />}
+              text={"Logout"}
+              accent={"#A73121"}
+              route={"/logout"}
+            />
+          </ProfileCards>
+
+          <ProfileSection user={user} />
+        </div>
+      </>
+    )
   );
 };
 

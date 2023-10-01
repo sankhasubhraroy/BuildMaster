@@ -16,3 +16,21 @@
   text-transform: capitalize;
   margin-top: 1rem;
 }
+
+.no-projects {
+  width: 640px;
+  margin: auto;
+  margin-top: 3rem;
+  background-color: white;
+  padding: 2rem;
+  border-radius: var(--rounded-md);
+}
+
+.no-projects p {
+  text-align: center;
+  font-size: medium;
+  font-weight: var(--weight-light);
+  text-transform: capitalize;
+  margin: 2rem 0;
+  color: rgba(0, 0, 0, 0.7);
+}

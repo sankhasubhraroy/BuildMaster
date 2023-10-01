@@ -1,5 +1,4 @@
 .p-card-section {
-  margin: auto;
   padding: 2rem;
   display: flex;
   flex-wrap: wrap;
@@ -14,9 +13,8 @@
   box-sizing: border-box;
   border-radius: var(--rounded-md);
   overflow: hidden;
-  -webkit-box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.5);
-  box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.5);
+  background-color: white;
+  cursor: pointer;
 }
 
 .p-card-icon {
@@ -27,6 +25,7 @@
 
 .p-card-text {
   margin: 2rem 0;
+  font-weight: var(--weight-light);
 }
 
 .p-card-underline {

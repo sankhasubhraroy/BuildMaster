@@ -1,8 +1,11 @@
+import PageHeader from "../../components/PageHeader";
+
 const Contact = () => {
   return (
-    <div>
+    <>
+      <PageHeader heading="Contact" />
       <h1>This is contact</h1>
-    </div>
+    </>
   );
 };
 

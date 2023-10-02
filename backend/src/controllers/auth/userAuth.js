@@ -33,7 +33,7 @@ const register = async (req, res) => {
       return res.status(400).json({
         success: false,
         message:
-          "Password must contain at least 8 characters, one letter, one number and a special character",
+          "Password must contain at least 6 characters, one letter, one number and a special character",
       });
     }
 

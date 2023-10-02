@@ -1,8 +1,10 @@
+const { decryptData, encryptData } = require("../../helpers/encryption");
 const {
   isNameValid,
   isPhoneValid,
   isEmailValid,
   isUsernameValid,
+  isPasswordValid,
 } = require("../../helpers/validations");
 const User = require("../../models/user");
 
@@ -92,11 +94,12 @@ const updateUserDetails = async (req, res) => {
     }
 
     // Checking if the credentials already exists
-    const exisingUser = await User.findOne({
-      $or: [{ username }, { email }, { phone }],
+    const exisingUser = await User.find({
+      _id: { $ne: id },
+      $or: [{ username }, { email }, { phone }, { _id: { $ne: id } }],
     });
 
-    if (exisingUser) {
+    if (exisingUser.length === 0) {
       return res.status(400).json({
         success: false,
         message: "username & email & phone should be unique",
@@ -115,11 +118,11 @@ const updateUserDetails = async (req, res) => {
     user.email = email || user.email;
     user.username = username || user.username;
     user.phone = phone || user.phone;
-    user.avatar = avatar || user.avatar;
+    user.avatar = `http://localhost:5000/uploads/${avatar}` || user.avatar;
 
     await user.save();
 
-    res.status(201).json({
+    res.status(200).json({
       success: true,
       message: "Updated successfully",
       user,
@@ -133,4 +136,70 @@ const updateUserDetails = async (req, res) => {
   }
 };
 
-module.exports = { getUserById, getUserProfile, updateUserDetails };
+const updatePassword = async (req, res) => {
+  try {
+    const { id } = req.user;
+    const { oldPassword, newPassword } = req.body;
+
+    // validations
+    if (!oldPassword || !newPassword) {
+      return res.status(400).json({
+        success: false,
+        message: "Please fill all fields",
+      });
+    }
+    if (!isPasswordValid(newPassword)) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "Password should be atleast 6 characters one digit and one special character",
+      });
+    }
+    if (oldPassword === newPassword) {
+      return res.status(400).json({
+        success: false,
+        message: "Old password and new password cannot be same",
+      });
+    }
+
+    const user = await User.findById(id);
+    // check if user exists
+    if (!user) {
+      return res.status(400).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    // Check if old password is correct
+    const isMatch = await decryptData(oldPassword, user.password);
+    if (!isMatch) {
+      return res.status(400).json({
+        success: false,
+        message: "Old password is incorrect",
+      });
+    }
+
+    // Update password
+    const hashedPassword = await encryptData(newPassword);
+    await user.updateOne({ password: hashedPassword });
+
+    res.status(200).json({
+      success: true,
+      message: "Password updated successfully",
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      status: "error",
+      message: error.message,
+    });
+  }
+};
+
+module.exports = {
+  getUserById,
+  getUserProfile,
+  updateUserDetails,
+  updatePassword,
+};

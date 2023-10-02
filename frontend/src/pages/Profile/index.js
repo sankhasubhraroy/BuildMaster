@@ -10,11 +10,17 @@ import { useEffect, useState } from "react";
 import axios from "../../api/axios";
 import PageHeader from "../../components/PageHeader";
 import "./index.css";
+import { useNavigate } from "react-router-dom";
+import { useModal } from "../../contexts/modalContext";
+import EditUser from "../../components/EditUser";
+import UpdatePassword from "../../components/UpdatePassword";
 
 const Profile = () => {
   const { auth, logout } = useAuth();
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
+  const { openModal } = useModal();
 
   useEffect(() => {
     axios
@@ -45,25 +51,28 @@ const Profile = () => {
               icon={<IoConstructOutline />}
               text={"Projects"}
               accent={"#4f709c"}
-              route={"/projects"}
+              onClick={() => navigate("/projects")}
             />
+
             <Card
               icon={<TbEdit />}
               text={"Edit Profile"}
               accent={"#186F65"}
-              route={"/profile/edit"}
+              onClick={() => openModal(<EditUser user={user} />)}
             />
+
             <Card
               icon={<RiLockPasswordLine />}
               text={"Change Password"}
               accent={"#213555"}
-              route={"/profile/edit/password"}
+              onClick={() => openModal(<UpdatePassword />)}
             />
+
             <Card
               icon={<MdLogout />}
               text={"Logout"}
               accent={"#A73121"}
-              route={"/logout"}
+              onClick={null}
             />
           </ProfileCards>
 

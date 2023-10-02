@@ -1,7 +1,6 @@
 import { FaArrowRightLong } from "react-icons/fa6";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 // Variants for underline
 const underlineVariants = {
@@ -13,9 +12,8 @@ const underlineVariants = {
   },
 };
 
-const Card = ({ icon, text, accent, route }) => {
+const Card = ({ icon, text, accent, onClick }) => {
   const [isActive, setIsActive] = useState(false);
-  const navigate = useNavigate();
 
   const handleHoverStart = () => {
     setIsActive(true);
@@ -31,7 +29,7 @@ const Card = ({ icon, text, accent, route }) => {
       onHoverEnd={handleHoverEnd}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      onClick={() => navigate(route)}
+      onClick={onClick}
       className="p-card"
     >
       <div className="p-card-icon" style={{ color: accent }}>

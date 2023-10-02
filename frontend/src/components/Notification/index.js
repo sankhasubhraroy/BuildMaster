@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNotification } from "../../contexts/notificationContext";
-import { CloseButton } from "./closeButton";
+import { IoClose } from "react-icons/io5";
 
 // Variants for notification body
 const notificationVariants = {
@@ -42,11 +42,16 @@ const Notification = ({ notification }) => {
       className="notification"
       style={
         notification.type === "success"
-          ? { backgroundColor: "green" }
-          : { backgroundColor: "red" }
+          ? { backgroundColor: "#32cd32" }
+          : { backgroundColor: "#ed2939" }
       }
     >
-      <CloseButton close={() => removeNotification(notification.id)} />
+      <button
+        className="notification-close"
+        onClick={() => removeNotification(notification.id)}
+      >
+        <IoClose size={22} color="white" />
+      </button>
       <p className="notification-content">{notification.message}</p>
       <motion.div
         initial="active"

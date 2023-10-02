@@ -1,8 +1,11 @@
+import PageHeader from "../../components/PageHeader";
+
 const Services = () => {
   return (
-    <div>
+    <>
+      <PageHeader heading="Services" />
       <h1>This is services</h1>
-    </div>
+    </>
   );
 };
 

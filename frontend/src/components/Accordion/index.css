@@ -15,14 +15,17 @@
   user-select: none;
   background-color: var(--bg-secondary);
   transition: background-color 0.15s ease-in-out;
+  color: var(--text-light);
 }
 
 .accordion-header:hover {
   background-color: var(--accent-200);
+  color: var(--text-dark);
 }
 
 .accordion-header.active {
   background-color: var(--accent-200);
+  color: var(--text-dark);
 }
 
 .accordion-header-arrow {

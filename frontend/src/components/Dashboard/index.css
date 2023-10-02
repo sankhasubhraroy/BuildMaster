@@ -44,3 +44,38 @@
   font-weight: var(--weight-light);
   color: var(--success-green);
 }
+
+.d-l {
+  width: 640px;
+  margin: 3rem auto;
+}
+
+.d-l h1 {
+  margin: 2rem 0;
+  font-weight: var(--weight-light);
+}
+
+.li-head {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+  text-transform: capitalize;
+}
+
+.li-avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--rounded-full);
+}
+
+.li-panel span {
+  font-weight: var(--weight-light);
+  margin: 0 1rem;
+}
+
+.li-btn {
+  display: block;
+  margin: auto;
+  background-color: transparent;
+}

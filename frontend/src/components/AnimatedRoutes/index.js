@@ -13,6 +13,9 @@ import AdminLogin from "../AdminLogin";
 import CreateAmin from "../CreateAdmin";
 import AdminMenu from "../AdminMenu";
 import Dashboard from "../Dashboard";
+import UserList from "../Dashboard/UserList";
+import ProjectList from "../Dashboard/ProjectList";
+import TaskList from "../Dashboard/TaskList";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -35,6 +38,9 @@ const AnimatedRoutes = () => {
             <Route path="login" element={<AdminLogin />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="create" element={<CreateAmin />} />
+            <Route path="dashboard/list/users" element={<UserList />} />
+            <Route path="dashboard/list/projects" element={<ProjectList />} />
+            <Route path="dashboard/list/tasks" element={<TaskList />} />
           </Route>
         </Routes>
       </AnimatePresence>

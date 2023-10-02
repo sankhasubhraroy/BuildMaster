@@ -15,4 +15,7 @@ router.use("/user", require("./user"));
 // Blueprints route
 router.use("/blueprints", require("./blueprints"));
 
+// Admin route
+router.use("/admin", require("./admin"));
+
 module.exports = router;

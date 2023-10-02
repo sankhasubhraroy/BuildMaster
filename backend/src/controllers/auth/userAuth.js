@@ -65,7 +65,7 @@ const register = async (req, res) => {
     }).save();
 
     // Payload for JWT
-    const payload = { id: user.id };
+    const payload = { id: user.id, role: "user" };
     // Generating JWT Token
     const token = await generateJWT(payload);
 
@@ -117,7 +117,7 @@ const login = async (req, res) => {
     }
 
     // Payload for JWT
-    const payload = { id: user.id };
+    const payload = { id: user.id, role: "user" };
     // Generating JWT token
     const token = await generateJWT(payload);
 

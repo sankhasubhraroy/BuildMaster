@@ -35,7 +35,6 @@ const Profile = () => {
         setIsLoading(false);
       })
       .catch((error) => {
-        console.log(error.response.data);
         logout();
       });
   }, [auth, logout]);
@@ -72,7 +71,7 @@ const Profile = () => {
               icon={<MdLogout />}
               text={"Logout"}
               accent={"#A73121"}
-              onClick={null}
+              onClick={() => logout()}
             />
           </ProfileCards>
 

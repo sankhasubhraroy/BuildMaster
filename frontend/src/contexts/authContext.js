@@ -1,10 +1,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "../api/axios";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [auth, setAuth] = useState(localStorage.getItem("token"));
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (auth) {
@@ -20,12 +22,14 @@ export function AuthProvider({ children }) {
     setAuth(token);
     localStorage.setItem("token", token);
     axios.defaults.headers.common["Authorization"] = auth;
+    navigate("/profile", { replace: true });
   };
 
   const logout = () => {
     setAuth(null);
     localStorage.removeItem("token");
     delete axios.defaults.headers.common["Authorization"];
+    navigate("/", { replace: true });
   };
 
   return (

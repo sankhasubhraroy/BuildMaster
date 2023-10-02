@@ -107,7 +107,7 @@ const Navbar = () => {
           <div className="logo-group">
             {isTablet && <Hamburger toggle={() => setIsNavOpen(!isNavOpen)} />}
             <div className="brand-logo">
-              <Link>
+              <Link to="/">
                 <h1
                   style={
                     !isTablet && scrollY > 0

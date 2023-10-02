@@ -15,7 +15,7 @@ const ProjectList = () => {
         },
       })
       .then((response) => {
-        setProjects(response.data.users);
+        setProjects(response.data.projects);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -29,10 +29,30 @@ const ProjectList = () => {
         <h1>Projects List</h1>
 
         <AccordionProvider>
-          <AccordionItem>
-            <AccordionHeader>user</AccordionHeader>
-            <AccordionPanel>details</AccordionPanel>
-          </AccordionItem>
+          {projects.map((project, index) => (
+            <AccordionItem key={index}>
+              <AccordionHeader>{project.name}</AccordionHeader>
+              <AccordionPanel>
+                <div className="li-panel">
+                  <p>
+                    Description<span>{project.description}</span>
+                  </p>
+                  <p>
+                    Location<span>{project.location.city}</span>
+                  </p>
+                  <p>
+                    Price<span>{project.price}</span>
+                  </p>
+                  <p>
+                    Status<span>{project.status}</span>
+                  </p>
+                  <p>
+                    Manager<span>{project.manager}</span>
+                  </p>
+                </div>
+              </AccordionPanel>
+            </AccordionItem>
+          ))}
         </AccordionProvider>
       </div>
     )

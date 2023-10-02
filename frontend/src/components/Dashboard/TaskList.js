@@ -15,7 +15,7 @@ const TaskList = () => {
         },
       })
       .then((response) => {
-        setTasks(response.data.users);
+        setTasks(response.data.tasks);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -29,10 +29,24 @@ const TaskList = () => {
         <h1>Tasks List</h1>
 
         <AccordionProvider>
-          <AccordionItem>
-            <AccordionHeader>user</AccordionHeader>
-            <AccordionPanel>details</AccordionPanel>
-          </AccordionItem>
+          {tasks.map((task, index) => (
+            <AccordionItem key={index}>
+              <AccordionHeader>{task.name}</AccordionHeader>
+              <AccordionPanel>
+                <div className="li-panel">
+                  <p>
+                    Description<span>{task.description}</span>
+                  </p>
+                  <p>
+                    Status<span>{task.status}</span>
+                  </p>
+                  <p>
+                    Manager<span>{task.manager}</span>
+                  </p>
+                </div>
+              </AccordionPanel>
+            </AccordionItem>
+          ))}
         </AccordionProvider>
       </div>
     )

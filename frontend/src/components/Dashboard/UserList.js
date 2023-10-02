@@ -33,8 +33,8 @@ const UserList = () => {
         <h1>Users List</h1>
 
         <AccordionProvider>
-          {users.map((user, id) => (
-            <AccordionItem key={id}>
+          {users.map((user, index) => (
+            <AccordionItem key={index}>
               <AccordionHeader>
                 <div className="li-head">
                   <img className="li-avatar" src={user.avatar} alt="avatar" />

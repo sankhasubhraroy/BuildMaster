@@ -1,0 +1,28 @@
+.a-login {
+  width: 500px;
+  margin: 10rem auto;
+}
+
+.a-login h1 {
+  font-weight: var(--weight-normal);
+  color: rgba(0, 0, 0, 0.7);
+  text-align: center;
+}
+
+.a-login-form {
+  user-select: none;
+}
+
+.a-login-btn {
+  padding: 0.5rem 2rem;
+  margin: 1rem auto;
+  display: block;
+  border-radius: var(--rounded-md);
+  border: none;
+  font-family: var(--font-basic);
+  font-weight: var(--weight-normal);
+  text-transform: capitalize;
+  background-color: var(--accent-500);
+  color: var(--text-light);
+  transition: color 5ms ease-in;
+}

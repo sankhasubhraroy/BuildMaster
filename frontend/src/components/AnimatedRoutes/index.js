@@ -9,6 +9,8 @@ import Auth from "../Auth";
 import Profile from "../../pages/Profile";
 import Projects from "../../pages/Projects";
 import Project from "../Project";
+import AdminLogin from "../AdminLogin";
+import CreateAmin from "../CreateAdmin";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -26,6 +28,11 @@ const AnimatedRoutes = () => {
             <Route path="profile" element={<Profile />} />
             <Route path="projects" element={<Projects />} />
             <Route path="project/:id" element={<Project />} />
+          </Route>
+          <Route path="/admin">
+            <Route path="login" element={<AdminLogin />} />
+            <Route path="dashboard" element={<AdminLogin />} />
+            <Route path="create" element={<CreateAmin />} />
           </Route>
         </Routes>
       </AnimatePresence>

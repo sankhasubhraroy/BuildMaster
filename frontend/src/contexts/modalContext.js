@@ -10,11 +10,12 @@ export function ModalProvider({ children }) {
   const openModal = (content) => {
     setModalContent(content);
     setIsModalOpen(true);
+    document.body.style.overflow = "hidden";
   };
 
   const closeModal = () => {
-    // setModalContent(null);
     setIsModalOpen(false);
+    document.body.style.overflow = "unset";
   };
 
   return (

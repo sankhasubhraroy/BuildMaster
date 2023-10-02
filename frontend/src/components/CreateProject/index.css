@@ -1,6 +1,6 @@
 .c-p {
-  width: 36rem;
-  height: 26rem;
+  max-width: 36rem;
+  max-height: 26rem;
 }
 
 .c-p h2 {

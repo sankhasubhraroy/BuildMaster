@@ -14,6 +14,7 @@ import {
 } from "../../utils/validations";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/authContext";
+import PageHeader from "../PageHeader";
 
 const Auth = () => {
   const [formType, setFormType] = useState("login");
@@ -134,103 +135,104 @@ const Auth = () => {
   };
 
   return (
-    <div className="auth">
-      <form className="auth-form" onSubmit={handleSubmit}>
-        <h1 className="form-heading">{formType}</h1>
+    <>
+      <PageHeader heading={formType} />
+      <div className="auth">
+        <form className="auth-form" onSubmit={handleSubmit}>
+          <div className="input-section">
+            <AnimatePresence>
+              {formType === "register" && (
+                <InputField
+                  label="full name"
+                  type="text"
+                  name="name"
+                  icon={<FaUser />}
+                  formData={formData}
+                  setFormData={setFormData}
+                />
+              )}
+            </AnimatePresence>
 
-        <div className="input-section">
-          <AnimatePresence>
-            {formType === "register" && (
-              <InputField
-                label="full name"
-                type="text"
-                name="name"
-                icon={<FaUser />}
-                formData={formData}
-                setFormData={setFormData}
-              />
-            )}
-          </AnimatePresence>
+            <InputField
+              label="email id"
+              type="email"
+              name="email"
+              icon={<FaEnvelope />}
+              formData={formData}
+              setFormData={setFormData}
+            />
 
-          <InputField
-            label="email id"
-            type="email"
-            name="email"
-            icon={<FaEnvelope />}
-            formData={formData}
-            setFormData={setFormData}
-          />
+            <AnimatePresence>
+              {formType === "register" && (
+                <InputField
+                  label="phone no"
+                  type="tel"
+                  name="phone"
+                  icon={<FaPhone />}
+                  formData={formData}
+                  setFormData={setFormData}
+                />
+              )}
+            </AnimatePresence>
 
-          <AnimatePresence>
-            {formType === "register" && (
-              <InputField
-                label="phone no"
-                type="tel"
-                name="phone"
-                icon={<FaPhone />}
-                formData={formData}
-                setFormData={setFormData}
-              />
-            )}
-          </AnimatePresence>
+            <InputField
+              label="password"
+              type="password"
+              name="password"
+              icon={<FaLock />}
+              formData={formData}
+              setFormData={setFormData}
+            />
 
-          <InputField
-            label="password"
-            type="password"
-            name="password"
-            icon={<FaLock />}
-            formData={formData}
-            setFormData={setFormData}
-          />
+            <AnimatePresence>
+              {formType === "register" && (
+                <InputField
+                  label="confirm password"
+                  type="password"
+                  name="confirmPassword"
+                  icon={<FaLock />}
+                  formData={formData}
+                  setFormData={setFormData}
+                />
+              )}
+            </AnimatePresence>
+          </div>
 
-          <AnimatePresence>
-            {formType === "register" && (
-              <InputField
-                label="confirm password"
-                type="password"
-                name="confirmPassword"
-                icon={<FaLock />}
-                formData={formData}
-                setFormData={setFormData}
-              />
-            )}
-          </AnimatePresence>
-        </div>
+          <motion.button
+            type="submit"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="form-btn"
+          >
+            {formType}
+          </motion.button>
 
-        <motion.button
-          type="submit"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="form-btn"
-        >
-          {formType}
-        </motion.button>
+          {formType === "login" && (
+            <p className="form-redirect">
+              Don't have an account,{" "}
+              <span
+                onClick={() => setFormType("register")}
+                className="redirect-highlight"
+              >
+                Register here
+              </span>
+            </p>
+          )}
 
-        {formType === "login" && (
-          <p className="form-redirect">
-            Don't have an account,{" "}
-            <span
-              onClick={() => setFormType("register")}
-              className="redirect-highlight"
-            >
-              Register here
-            </span>
-          </p>
-        )}
-
-        {formType === "register" && (
-          <p className="form-redirect">
-            Already have an account,{" "}
-            <span
-              onClick={() => setFormType("login")}
-              className="redirect-highlight"
-            >
-              Login here
-            </span>
-          </p>
-        )}
-      </form>
-    </div>
+          {formType === "register" && (
+            <p className="form-redirect">
+              Already have an account,{" "}
+              <span
+                onClick={() => setFormType("login")}
+                className="redirect-highlight"
+              >
+                Login here
+              </span>
+            </p>
+          )}
+        </form>
+      </div>
+    </>
   );
 };
 

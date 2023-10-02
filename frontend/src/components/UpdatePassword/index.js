@@ -91,9 +91,13 @@ const UpdatePassword = () => {
 
   return (
     <div className="c-p">
-      <h2>Edit Details</h2>
+      <h2>Update password</h2>
 
-      <form onSubmit={handleSubmit} className="c-p-form">
+      <form
+        onSubmit={handleSubmit}
+        className="c-p-form"
+        style={{ display: "flex", flexDirection: "column" }}
+      >
         {/* oldPassword */}
         <div className="c-p-field">
           <label htmlFor="oldPassword" className="c-p-label">

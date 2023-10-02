@@ -109,7 +109,11 @@ const EditUser = ({ user }) => {
     <div className="c-p">
       <h2>Edit Details</h2>
 
-      <form onSubmit={handleSubmit} className="c-p-form">
+      <form
+        onSubmit={handleSubmit}
+        className="c-p-form"
+        style={{ display: "flex", flexDirection: "column" }}
+      >
         {/* avatar */}
         <div className="c-p-field c-p-file">
           <label htmlFor="avatar" className="c-p-label">

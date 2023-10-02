@@ -27,5 +27,6 @@ const adminSchema = new Schema(
     timestamps: true,
   }
 );
+const Admin = mongoose.model("Admin", adminSchema);
 
-module.exports = mongoose.model("Admin", adminSchema);
+module.exports = Admin;

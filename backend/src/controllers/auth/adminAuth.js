@@ -11,7 +11,7 @@ const createAdmin = async (req, res) => {
 
     // validations
     if (req.user.role !== "admin") {
-      return res.status(400).json({
+      return res.status(401).json({
         success: false,
         message: "You have to be an admin to create an admin",
       });

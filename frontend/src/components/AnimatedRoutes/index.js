@@ -11,6 +11,7 @@ import Projects from "../../pages/Projects";
 import Project from "../Project";
 import AdminLogin from "../AdminLogin";
 import CreateAmin from "../CreateAdmin";
+import AdminMenu from "../AdminMenu";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -29,7 +30,7 @@ const AnimatedRoutes = () => {
             <Route path="projects" element={<Projects />} />
             <Route path="project/:id" element={<Project />} />
           </Route>
-          <Route path="/admin">
+          <Route path="/admin" element={<AdminMenu />}>
             <Route path="login" element={<AdminLogin />} />
             <Route path="dashboard" element={<AdminLogin />} />
             <Route path="create" element={<CreateAmin />} />

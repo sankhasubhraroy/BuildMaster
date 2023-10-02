@@ -1,0 +1,14 @@
+.admin-menu {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.admin-menu button {
+  background-color: transparent;
+  font-size: large;
+  color: rgba(0, 0, 0, 0.7);
+}

@@ -7,7 +7,6 @@ import { useNotification } from "../../contexts/notificationContext";
 import { useAdmin } from "../../contexts/adminContext";
 import { useModal } from "../../contexts/modalContext";
 import Secret from "../Secret";
-// import "./index.css";
 
 const CreateAmin = () => {
   const [formData, setFormData] = useState({});
@@ -33,8 +32,6 @@ const CreateAmin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    openModal(<Secret />);
-    return;
 
     try {
       const { name } = formData;
@@ -46,7 +43,7 @@ const CreateAmin = () => {
       }
 
       const response = await axios.post(
-        "/auth/admin/create",
+        "/auth/admin",
         JSON.stringify({ name }),
         {
           headers: {
@@ -59,6 +56,7 @@ const CreateAmin = () => {
       if (response?.status === 200) {
         handleSuccess(response.data.message);
         // Opening a one-time modal
+        openModal(<Secret secret={response.data.secret} />);
       }
     } catch (error) {
       if (!error?.response) {

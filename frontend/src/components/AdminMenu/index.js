@@ -2,9 +2,11 @@ import { BsFillGridFill, BsFillPersonPlusFill } from "react-icons/bs";
 import { FaPowerOff } from "react-icons/fa6";
 import { Outlet, useNavigate } from "react-router-dom";
 import "./index.css";
+import { useAdmin } from "../../contexts/adminContext";
 
 const AdminMenu = () => {
   const navigate = useNavigate();
+  const { logout } = useAdmin();
 
   return (
     <>
@@ -17,7 +19,7 @@ const AdminMenu = () => {
           <BsFillGridFill />
         </button>
 
-        <button title="logout" onClick={() => navigate("/admin/logout")}>
+        <button title="logout" onClick={() => logout()}>
           <FaPowerOff />
         </button>
       </nav>

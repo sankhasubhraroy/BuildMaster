@@ -26,23 +26,27 @@ const ProfileSection = ({ user }) => {
           <span></span>
         </p>
 
-        <p className="p-email">
-          {user.email}
-          {user.emailVerified ? (
-            <span>
-              <MdVerified />
-            </span>
-          ) : (
-            <span title="Email not verified">
-              <RiErrorWarningFill color="#ff6347" />
-            </span>
-          )}
-        </p>
+        {user.email && (
+          <p className="p-email">
+            {user.email}
+            {user.emailVerified ? (
+              <span>
+                <MdVerified />
+              </span>
+            ) : (
+              <span title="Email not verified">
+                <RiErrorWarningFill color="#ff6347" />
+              </span>
+            )}
+          </p>
+        )}
 
-        <p className="p-field">
-          {"+91 " + user.phone}
-          <span></span>
-        </p>
+        {user.phone && (
+          <p className="p-field">
+            {"+91 " + user.phone}
+            <span></span>
+          </p>
+        )}
       </div>
     </motion.section>
   );

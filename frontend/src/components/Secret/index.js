@@ -24,17 +24,23 @@ const Secret = ({ secret }) => {
       <h3>This is one time details, save it securely</h3>
 
       <div className="s-field">
-        <label htmlFor="username">Username</label>
-        <input type="text" disabled value="username" />
-        <button className="s-btn" onClick={() => copyToClipboard("username")}>
+        <label htmlFor="username">username</label>
+        <input type="text" disabled value={secret.username} />
+        <button
+          className="s-btn"
+          onClick={() => copyToClipboard(secret.username)}
+        >
           <FaRegCopy />
         </button>
       </div>
 
       <div className="s-field">
-        <label htmlFor="password">Password</label>
-        <input type="text" disabled value="password" />
-        <button className="s-btn" onClick={() => copyToClipboard("password")}>
+        <label htmlFor="password">password</label>
+        <input type="text" disabled value={secret.password} />
+        <button
+          className="s-btn"
+          onClick={() => copyToClipboard(secret.password)}
+        >
           <FaRegCopy />
         </button>
       </div>

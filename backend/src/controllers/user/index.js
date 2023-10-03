@@ -8,6 +8,31 @@ const {
 } = require("../../helpers/validations");
 const User = require("../../models/user");
 
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+
+    if (users.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "No users registered",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Users fetched successfully",
+      users,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 const getUserById = async (req, res) => {
   try {
     const id = req.params.id;
@@ -197,9 +222,42 @@ const updatePassword = async (req, res) => {
   }
 };
 
+const deleteUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Fetching the user data from databse
+    const user = await User.findById(id);
+
+    // If the project don't exist
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not registered",
+      });
+    }
+
+    // Delete the user
+    await User.findByIdAndDelete(id);
+
+    res.status(200).json({
+      success: true,
+      message: "User deleted",
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
+  getAllUsers,
   getUserById,
   getUserProfile,
   updateUserDetails,
   updatePassword,
+  deleteUser,
 };

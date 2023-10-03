@@ -4,8 +4,11 @@ const {
   createTask,
   updateTask,
   deleteTask,
+  getAllTasks,
 } = require("../../controllers/tasks");
 const authUser = require("../../middlewares/auth");
+
+router.get("/", getAllTasks);
 
 router.get("/:taskId", authUser, getTaskbyId);
 

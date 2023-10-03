@@ -1,6 +1,31 @@
 const Project = require("../../models/project");
 const Task = require("../../models/task");
 
+const getAllTasks = async (req, res) => {
+  try {
+    const tasks = await Task.find();
+
+    if (tasks.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "No tasks found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Tasks fetched successfully",
+      tasks,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 const getTaskbyId = async (req, res) => {
   try {
     const { taskId } = req.params;
@@ -169,4 +194,10 @@ const deleteTask = async (req, res) => {
   }
 };
 
-module.exports = { getTaskbyId, createTask, updateTask, deleteTask };
+module.exports = {
+  getAllTasks,
+  getTaskbyId,
+  createTask,
+  updateTask,
+  deleteTask,
+};

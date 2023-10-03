@@ -4,14 +4,14 @@ const {
   createProject,
   updateProject,
   deleteProject,
-  getProjects,
+  getAllProjects,
   getProjectsByUserId,
   getCoordinatesOfProject,
 } = require("../../controllers/projects");
 const authUser = require("../../middlewares/auth");
 const upload = require("../../middlewares/upload");
 
-router.get("/", authUser, getProjects);
+router.get("/", authUser, getAllProjects);
 
 router.get("/project", authUser, getProjectsByUserId);
 

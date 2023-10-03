@@ -1,7 +1,7 @@
 const getCoordinates = require("../../helpers/getCoordinates");
 const Project = require("../../models/project");
 
-const getProjects = async (req, res) => {
+const getAllProjects = async (req, res) => {
   try {
     const projects = await Project.find();
 
@@ -323,7 +323,7 @@ const getCoordinatesOfProject = async (req, res) => {
 };
 
 module.exports = {
-  getProjects,
+  getAllProjects,
   getProjectsByUserId,
   getProjectById,
   createProject,

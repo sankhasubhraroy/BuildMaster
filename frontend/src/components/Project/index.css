@@ -75,6 +75,12 @@
   color: var(--success-green);
 }
 
+.p-info-date span {
+  font-size: small;
+  font-weight: var(--weight-light);
+  margin-right: 1rem;
+}
+
 .p-info-description {
   margin-top: 1rem;
   font-weight: var(--weight-light);

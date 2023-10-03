@@ -76,6 +76,15 @@ const Project = () => {
               {project?.manager.name}
             </p>
             <p className="p-info-price">{"₹ " + project?.price}</p>
+            <p className="p-info-date">
+              <span>Start date</span>
+              {project?.startDate?.split("T")[0]}
+            </p>
+
+            <p className="p-info-date">
+              <span>End date</span>
+              {project?.endDate?.split("T")[0]}
+            </p>
             <p className="p-info-description">{project?.description}</p>
           </div>
 

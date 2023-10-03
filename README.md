@@ -1,4 +1,4 @@
-# Construction Manager
+# BuildMaster
 
 ## Table of Contents
 
@@ -12,7 +12,7 @@
 
 ## About
 
-This is a project about construction management system.
+This is a project about construction management systems.
 
 ## Features
 
@@ -35,17 +35,20 @@ Before you begin, ensure you have met the following requirements:
 
 1. Clone the repository:
 
-```shell
-git clone https://github.com/yourusername/construction-manager.git
+```
+git clone https://github.com/sankhasubhraroy/BuildMaster-HyScaler-Assessment.git
 ```
 
 2. Navigate to the project directory:
 
 ```
-cd construction-manager
+cd backend
+```
+```
+cd frontend
 ```
 
-3. Install the dependencies:
+3. Install the dependencies for both Frontend & Backend:
 
 ```
 npm install

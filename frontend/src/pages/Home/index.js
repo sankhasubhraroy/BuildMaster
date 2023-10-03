@@ -1,10 +1,11 @@
+import Hero from "../../components/Hero";
 import PageHeader from "../../components/PageHeader";
 
 const Home = () => {
   return (
     <>
       <PageHeader heading="Home" />
-      <h1>This is home</h1>
+      <Hero />
     </>
   );
 };

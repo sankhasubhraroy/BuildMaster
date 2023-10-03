@@ -4,7 +4,7 @@ import PageHeader from "../../components/PageHeader";
 const Contact = () => {
   return (
     <>
-      <PageHeader heading="Contact" />
+      <PageHeader heading="Contact Us" />
       <ContactForm />
     </>
   );

@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { useModal } from "../../contexts/modalContext";
 import EditUser from "../../components/EditUser";
 import UpdatePassword from "../../components/UpdatePassword";
+import { motion } from "framer-motion";
 
 const Profile = () => {
   const { auth, logout } = useAuth();
@@ -41,7 +42,11 @@ const Profile = () => {
 
   return (
     !isLoading && (
-      <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
         <PageHeader heading="profile" />
 
         <div className="pr-container">
@@ -77,7 +82,7 @@ const Profile = () => {
 
           <ProfileSection user={user} />
         </div>
-      </>
+      </motion.div>
     )
   );
 };

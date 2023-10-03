@@ -10,7 +10,7 @@ import PageHeader from "../../components/PageHeader";
 import "./index.css";
 import BackBtn from "../../components/Buttons/BackBtn";
 import { useNavigate } from "react-router-dom";
-// import { useNotification } from "../../contexts/notificationContext";
+import { motion } from "framer-motion";
 
 const Projects = () => {
   const { openModal } = useModal();
@@ -18,26 +18,6 @@ const Projects = () => {
   const [projects, setProjects] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
-  // const { addNotification } = useNotification();
-
-  // Call the notification on success
-  // const handleSuccess = (message) => {
-  //   addNotification({
-  //     type: "success",
-  //     message: message,
-  //   });
-  // };
-
-  // Call the notification on failure
-  // const handleFailure = useCallback(
-  //   (message) => {
-  //     addNotification({
-  //       type: "error",
-  //       message: message,
-  //     });
-  //   },
-  //   [addNotification]
-  // );
 
   useEffect(() => {
     axios
@@ -58,7 +38,11 @@ const Projects = () => {
 
   return (
     !isLoading && (
-      <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
         <PageHeader heading="projects" />
 
         <div className="projects-page">
@@ -102,7 +86,7 @@ const Projects = () => {
             </div>
           )}
         </div>
-      </>
+      </motion.div>
     )
   );
 };

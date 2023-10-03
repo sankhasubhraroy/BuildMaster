@@ -1,8 +1,13 @@
+import { motion } from "framer-motion";
 import PageHeader from "../../components/PageHeader";
 
 const About = () => {
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <PageHeader heading="About Us" />
       <div style={{ width: "600px", margin: "2rem auto" }}>
         <p>
@@ -22,7 +27,7 @@ const About = () => {
           you manage your construction projects efficiently.
         </p>
       </div>
-    </>
+    </motion.div>
   );
 };
 

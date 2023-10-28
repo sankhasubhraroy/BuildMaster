@@ -34,7 +34,7 @@ const Projects = () => {
       .catch((error) => {
         setIsLoading(false);
       });
-  }, [auth]);
+  }, [auth, projects]);
 
   return (
     !isLoading && (

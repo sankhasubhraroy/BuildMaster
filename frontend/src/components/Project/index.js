@@ -42,7 +42,7 @@ const Project = () => {
       .catch((error) => {
         console.log(error.response.data);
       });
-  }, [auth, id]);
+  }, [auth, id, project]);
 
   return (
     !isLoading && (

@@ -5,6 +5,7 @@ import { useNotification } from "../../contexts/notificationContext";
 import axios from "../../api/axios";
 import { useModal } from "../../contexts/modalContext";
 import { useAuth } from "../../contexts/authContext";
+import { useNavigate } from "react-router-dom";
 
 const CreateProject = () => {
   const [formData, setFormData] = useState({
@@ -25,6 +26,7 @@ const CreateProject = () => {
   const { addNotification } = useNotification();
   const { closeModal } = useModal();
   const { auth } = useAuth();
+  const navigate = useNavigate();
 
   // Call the notification on success
   const handleSuccess = (message) => {
@@ -98,6 +100,7 @@ const CreateProject = () => {
 
         // closing the modal
         closeModal();
+        navigate("/projects");
       }
     } catch (error) {
       if (!error?.response) {

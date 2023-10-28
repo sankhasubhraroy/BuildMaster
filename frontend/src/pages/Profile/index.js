@@ -38,7 +38,7 @@ const Profile = () => {
       .catch((error) => {
         logout();
       });
-  }, [auth, logout]);
+  }, [auth, logout, user]);
 
   return (
     !isLoading && (
